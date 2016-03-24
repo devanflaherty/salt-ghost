@@ -45,7 +45,7 @@ config = {
             accessKeyId: process.env.AWS_KEY,
             secretAccessKey: process.env.AWS_SECRET,
             bucket: process.env.AWS_BUCKET,
-            region: 'us-east-1',
+            region: "us-east-1",
             assetHost: process.env.AWS_HOST
           }
         }
