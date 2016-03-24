@@ -46,7 +46,7 @@ config = {
             secretAccessKey: process.env.AWS_SECRET,
             bucket: process.env.AWS_BUCKET,
             region: 'us-east-1',
-            assetHost: 's3_acces_url'
+            assetHost: process.env.AWS_HOST
           }
         }
     },
