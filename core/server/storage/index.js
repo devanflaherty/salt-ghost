@@ -6,7 +6,7 @@ function getStorage(storageChoice) {
     var storagePath,
         storageConfig;
 
-    storageChoice = 'local-file-store';
+    storageChoice = config.storage.active;
     storagePath = config.paths.storage;
     storageConfig = config.storage[storageChoice];
 
