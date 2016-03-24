@@ -2474,6 +2474,11 @@
       "from": "ghost-gql@0.0.4",
       "resolved": "https://registry.npmjs.org/ghost-gql/-/ghost-gql-0.0.4.tgz"
     },
+    "ghost-s3-storage": {
+      "version": "0.2.2",
+      "from": "ghost-s3-storage@latest",
+      "resolved": "https://registry.npmjs.org/ghost-s3-storage/-/ghost-s3-storage-0.2.2.tgz"
+    },
     "github": {
       "version": "0.2.4",
       "from": "github@>=0.2.3 <0.3.0",

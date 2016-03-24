@@ -6,7 +6,7 @@ function getStorage(storageChoice) {
     var storagePath,
         storageConfig;
 
-    storageChoice = 's3';  
+    storageChoice = 'local-file-store';
     storagePath = config.paths.storage;
     storageConfig = config.storage[storageChoice];
 
