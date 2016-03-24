@@ -39,7 +39,6 @@ config = {
             host: '0.0.0.0',
             port: process.env.PORT
         },
-        fileStorage: true,
         aws: {
             accessKeyId: process.env.AWS_KEY,
             secretAccessKey: process.env.AWS_SECRET,
