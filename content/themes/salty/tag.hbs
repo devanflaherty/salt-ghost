@@ -10,20 +10,14 @@
   <section id="intro" class="small-pad-medium off-white-bg">
     <div class="row align-center align-middle text-center">
       <div class="columns">
-        <h4 class="hint"
-          data-bottom-top="transform: translate(0px, 60px);"
-          data-top-bottom="transform: translate(0px, -60px);"
-          data-anchor-target="#intro">
+        <h4 class="hint">
           {{#if tag.description}}
               {{tag.description}}
           {{else}}
               A {{pagination.total}}-post collection
           {{/if}}
         </h4>
-        <h2 class="brand-vision"
-          data-bottom-top="transform: translate(0px, 45px);"
-          data-top-bottom="transform: translate(0px, -45px);"
-          data-anchor-target="#intro">
+        <h2>
           <strong>{{tag.name}}</strong>
         </h2>
       </div>
