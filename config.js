@@ -14,17 +14,30 @@ config = {
         url: 'http://my-ghost-blog.com',
         mail: {},
         database: {
-            client: 'sqlite3',
+            client: 'postgres',
             connection: {
-                filename: path.join(__dirname, '/content/data/ghost.db')
+                  host: process.env.POSTGRES_HOST,
+                  user: process.env.POSTGRES_USER,
+                  password: process.env.POSTGRES_PASSWORD,
+                  database: process.env.POSTGRES_DATABASE,
+                  port: '5432'
             },
             debug: false
         },
-
         server: {
-            host: '127.0.0.1',
-            port: '2368'
-        }
+            host: '0.0.0.0',
+            port: process.env.PORT
+        },
+        storage: {
+          active: 'ghost-s3',
+          'ghost-s3': {
+            accessKeyId: process.env.AWS_KEY,
+            secretAccessKey: process.env.AWS_SECRET,
+            bucket: 'saltagency.com',
+            region: 'Oregon',
+            assetHost: 'http://saltagency.com.s3-website-us-west-2.amazonaws.com'
+          }
+        },
     },
 
     // ### Development **(default)**
