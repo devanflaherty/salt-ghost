@@ -6,6 +6,7 @@
 var path = require('path'),
     config;
 
+var region = "us-east-1";
 config = {
     // ### Production
     // When running Ghost in the wild, use the production environment.
@@ -45,7 +46,7 @@ config = {
             accessKeyId: process.env.AWS_KEY,
             secretAccessKey: process.env.AWS_SECRET,
             bucket: process.env.AWS_BUCKET,
-            region: "us-east-1",
+            region: region,
             assetHost: process.env.AWS_HOST
           }
         }
