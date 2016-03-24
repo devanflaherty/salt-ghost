@@ -12,7 +12,18 @@ config = {
     // Configure your URL and mail settings here
     production: {
         url: 'http://salt-ghost.herokuapp.com',
-        mail: {},
+        mail: {
+            transport: 'SMTP',
+            options: {
+                host: 'email-smtp.us-west-2.amazonaws.com',
+                port: 465,
+                service: 'SES',
+                auth: {
+                    user: process.env.SES_USER,
+                    pass: process.env.SES_PASSWORD
+                }
+            }
+        },
         database: {
             client: 'postgres',
             connection: {
