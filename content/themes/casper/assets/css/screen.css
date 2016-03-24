@@ -25,7 +25,7 @@
    0. normalize.css v3.0.3 | MIT License | git.io/normalize | (minified)
    ========================================================================== */
 
-html {
+html { 
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
@@ -71,7 +71,7 @@ button, input, optgroup, select, textarea {
 }
 button { overflow: visible; }
 button, select { text-transform: none; }
-button, html input[type="button"],
+button, html input[type="button"], 
 input[type="reset"], input[type="submit"] {
     -webkit-appearance: button;
     cursor: pointer;
@@ -116,7 +116,7 @@ td, th{ padding: 0; }
 
 /* Apply these base styles to all icons */
 [class^="icon-"]:before, [class*=" icon-"]:before {
-    font-family: "casper-icons", 'GothamHTFBook', sans-serif;
+    font-family: "casper-icons", "Open Sans", sans-serif;
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -183,8 +183,9 @@ html {
 body {
     height: 100%;
     max-height: 100%;
-    font-family: 'GothamHTFBook', serif;
+    font-family: "Merriweather", serif;
     letter-spacing: 0.01rem;
+    font-size: 1.8rem;
     line-height: 1.75em;
     color: #3A4145;
     -webkit-font-feature-settings: 'kern' 1;
@@ -209,7 +210,7 @@ h4, h5, h6 {
     color: #2E2E2E;
     line-height: 1.15em;
     margin: 0 0 0.4em 0;
-    font-family: 'GothamHTFBold', sans-serif;
+    font-family: "Open Sans", sans-serif;
     text-rendering: geometricPrecision;
 }
 
@@ -498,6 +499,22 @@ body.nav-opened .site-wrapper {
    4. General - The main styles for the the theme
    ========================================================================== */
 
+/* Big cover image on the home page */
+.main-header {
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 100vh;
+    margin-bottom: 5rem;
+    text-align: center;
+    background: #222 no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.main-header .inner {
+    width: 80%;
+}
 
 .main-nav {
     position: relative;
@@ -507,7 +524,7 @@ body.nav-opened .site-wrapper {
 
 .main-nav a {
     text-decoration: none;
-    font-family:'GothamHTFBook', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Navigation */
@@ -682,7 +699,7 @@ body.nav-opened .nav {
     color: #111 !important; /* Overides `.nav a:link, .nav a:visited` colour */
     text-align: center;
     font-size: 12px;
-    font-family: 'GothamHTFBold', sans-serif;
+    font-family: "Open Sans", sans-serif;
     text-transform: uppercase;
     text-decoration: none;
     line-height: 35px;
@@ -851,25 +868,20 @@ body.nav-opened .nav {
 /* The details of your blog. Defined in ghost/settings/ */
 .page-title {
     margin: 10px 0 10px 0;
-    font-size: 10rem;
+    font-size: 5rem;
     letter-spacing: -1px;
-    font-weight: 200;
-    font-family: 'GothamHTFBold', sans-serif;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
     color: #fff;
 }
 
 .page-description {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
     line-height: 1.5em;
     font-weight: 400;
-    font-family: 'GothamHTFBook', serif;
-    text-transform: uppercase;
-    color: #2a2a2a;
-    letter-spacing: 5px;
-    text-align: center;
-    position: relative;
-    z-index: 60;
+    font-family: "Merriweather", serif;
+    letter-spacing: 0.01rem;
     color: rgba(255,255,255,0.8);
 }
 
@@ -903,7 +915,30 @@ body.nav-opened .nav {
 
 /* Every post, on every page, gets this style on its <article> tag */
 .post {
+    position: relative;
+    width: 80%;
+    max-width: 710px;
+    margin: 4rem auto;
+    padding-bottom: 4rem;
     border-bottom: #EBF2F6 1px solid;
+    word-wrap: break-word;
+}
+
+/* Add a little circle in the middle of the border-bottom on our .post
+   just for the lolz and stylepoints. */
+.post:after {
+    display: block;
+    content: "";
+    width: 7px;
+    height: 7px;
+    border: #E7EEF2 1px solid;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    background: #FFF;
+    border-radius: 100%;
+    box-shadow: #FFF 0 0 0 5px;
 }
 
 body:not(.post-template) .post-title {
@@ -912,7 +947,6 @@ body:not(.post-template) .post-title {
 
 .post-title a {
     text-decoration: none;
-    color
 }
 
 .post-excerpt p {
@@ -1138,6 +1172,12 @@ body:not(.post-template) .post-title {
    Doing it like this means it's easier for the author bio
    to be flexible at smaller screen sizes while the share
    links remain at a fixed width the whole time */
+.post-footer .share {
+    position: absolute;
+    top: 6rem;
+    right: 0;
+    width: 140px;
+}
 
 .post-footer .share a {
     font-size: 1.8rem;
@@ -1271,7 +1311,7 @@ body:not(.post-template) .post-title {
 /* Location, website, and link */
 .author-profile .author-meta {
     margin: 2rem 0;
-    font-family: 'GothamHTFBook', serif;
+    font-family: "Merriweather", serif;
     letter-spacing: 0.01rem;
     font-size: 1.7rem;
 }
@@ -1357,7 +1397,7 @@ body:not(.post-template) .post-title {
     padding: 4px 10px 5px;
     text-transform: uppercase;
     font-size: 1.1rem;
-    font-family: 'GothamHTFBook', sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: rgba(255,255,255,0.8);
     border: rgba(255,255,255,0.5) 1px solid;
     border-radius: 4px;
@@ -1449,7 +1489,7 @@ body:not(.post-template) .post-title {
     width: 80%;
     max-width: 710px;
     margin: 4rem auto;
-    font-family: 'GothamHTFBook', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.3rem;
     color: #9EABB3;
     text-align: center;
@@ -1530,20 +1570,36 @@ body:not(.post-template) .post-title {
    ========================================================================== */
 
 .site-footer {
-    position: absolute;
-    bottom: 30px;
-    left: 0; right: 0;
-    margin: auto;
-    font-size: .85rem;
-    line-height: 1.25em;
+    position: relative;
+    margin: 8rem 0 0 0;
+    padding: 1rem 15px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1rem;
+    line-height: 1.75em;
     color: #BBC7CC;
 }
 
 .site-footer a {
     color: #BBC7CC;
+    text-decoration: none;
+    font-weight: bold;
 }
+
 .site-footer a:hover {
     border-bottom: #bbc7cc 1px solid;
+}
+
+.poweredby {
+    display: block;
+    width: 45%;
+    float: right;
+    text-align: right;
+}
+
+.copyright {
+    display: block;
+    width: 45%;
+    float: left;
 }
 
 
@@ -1582,6 +1638,19 @@ body:not(.post-template) .post-title {
     .page-title {
         font-size: 4rem;
         letter-spacing: -1px;
+    }
+
+    .page-description {
+        font-size: 1.8rem;
+        line-height: 1.5em;
+    }
+
+    .post {
+        font-size: 0.95em
+    }
+
+    body:not(.post-template) .post-title {
+        font-size: 3.2rem;
     }
 
     hr {
@@ -1637,6 +1706,20 @@ body:not(.post-template) .post-title {
         height:45vh;
     }
 
+    .tag-head.main-header,
+    .author-head.main-header {
+        height: 30vh;
+    }
+
+    .no-cover.post-head.main-header {
+        height: 55px;
+        padding: 0;
+    }
+
+    .no-cover.author-head.main-header {
+        padding: 0;
+    }
+
     .read-next {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -1690,6 +1773,54 @@ body:not(.post-template) .post-title {
 
     .blog-logo img {
         height: 30px;
+    }
+
+    .menu-button {
+        padding: 0 5px;
+        border-radius: 0;
+        border-width: 0;
+        color: #2e2e2e;
+        background: transparent;
+    }
+    .menu-button:hover {
+        color: #2e2e2e;
+        border-color: transparent;
+        background: none;
+    }
+    body.nav-opened .menu-button {
+        background: none;
+        border: transparent;
+    }
+
+    .main-nav.overlay a:hover {
+        color: #fff;
+        border-color: transparent;
+        background: transparent;
+    }
+
+    .no-cover .main-nav.overlay {
+        background: none;
+    }
+    .no-cover .main-nav.overlay .menu-button {
+        border: none;
+    }
+
+    .main-nav.overlay .menu-button {
+        border-color: transparent;
+    }
+
+    .nav-title {
+        top: 25px;
+
+    }
+
+    .nav-close {
+        position: absolute;
+        top: 18px;
+    }
+
+    .nav ul {
+        padding: 60px 9% 5%;
     }
 
     .inner,

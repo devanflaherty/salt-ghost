@@ -1,4 +1,13 @@
-<li class="hide-for-medium"><a class="HomeNav" href="http://salt.heroku.com">home</a></li>
-<li><a class="ShowcaseNav" href="http://salt.heroku.com/showcase">showcase</a></li>
-<li><a class="ProcessNav" href="http://salt.heroku.com/process">process</a></li>
-<li><a class="BlogNav" href="http://salt.heroku.com/blog">blog</a></li>
+<div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        {{#foreach navigation}}
+            <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}</a></li>
+        {{/foreach}}
+    </ul>
+    <a class="subscribe-button icon-feed" href="{{@blog.url}}/rss/">Subscribe</a>
+</div>
+<span class="nav-cover"></span>

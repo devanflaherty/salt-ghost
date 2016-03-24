@@ -2,33 +2,29 @@
 {{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
 
 {{! If we have a tag cover, display that - else blog cover - else nothing }}
-{{>header}}
+<header class="main-header tag-head {{#if tag.image}}" style="background-image: url({{tag.image}}){{else}}{{#if @blog.cover}}" style="background-image: url({{@blog.cover}}){{else}}no-cover{{/if}}{{/if}}">
+    <nav class="main-nav overlay clearfix">
+        {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="{{@blog.title}}" /></a>{{/if}}
+        {{#if @blog.navigation}}
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        {{/if}}
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">{{tag.name}}</h1>
+            <h2 class="page-description">
+                {{#if tag.description}}
+                    {{tag.description}}
+                {{else}}
+                    A {{pagination.total}}-post collection
+                {{/if}}
+            </h2>
+        </div>
+    </div>
+</header>
 
 {{! The main content area on the homepage }}
-<main id="main" role="main">
-  <!-- INTRO -->
-  <section id="intro" class="small-pad-medium off-white-bg">
-    <div class="row align-center align-middle text-center">
-      <div class="columns">
-        <h4 class="hint"
-          data-bottom-top="transform: translate(0px, 60px);"
-          data-top-bottom="transform: translate(0px, -60px);"
-          data-anchor-target="#intro">
-          {{#if tag.description}}
-              {{tag.description}}
-          {{else}}
-              A {{pagination.total}}-post collection
-          {{/if}}
-        </h4>
-        <h2 class="brand-vision"
-          data-bottom-top="transform: translate(0px, 45px);"
-          data-top-bottom="transform: translate(0px, -45px);"
-          data-anchor-target="#intro">
-          <strong>{{tag.name}}</strong>
-        </h2>
-      </div>
-    </div>
-  </section>
+<main class="content" role="main">
 
     {{! The tag below includes the post loop - partials/loop.hbs }}
     {{> "loop"}}

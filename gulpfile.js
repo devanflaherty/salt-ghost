@@ -25,10 +25,10 @@ gulp.task('styles', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-    .pipe(gulp.dest('./content/themes/casper/assets/css/'))
+    .pipe(gulp.dest('./content/themes/salty/assets/css/'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('./content/themes/casper/assets/css/'))
+    .pipe(gulp.dest('./content/themes/salty/assets/css/'))
 });
 
 // JSHint, concat, and minify JavaScript
@@ -43,10 +43,10 @@ gulp.task('site-js', function() {
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(concat('app.js'))
-    .pipe(gulp.dest('./content/themes/casper/assets/js/'))
+    .pipe(gulp.dest('./content/themes/salty/assets/js/'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest('./content/themes/casper/assets/js/'))
+    .pipe(gulp.dest('./content/themes/salty/assets/js/'))
 });
 
 // JSHint, concat, and minify Foundation JavaScript
@@ -79,7 +79,7 @@ gulp.task('foundation-js', function() {
           './vendor/foundation-sites/js/foundation.tooltip.js',
   ])
     .pipe(concat('foundation.js'))
-    .pipe(gulp.dest('./content/themes/casper/assets/js/'))
+    .pipe(gulp.dest('./content/themes/salty/assets/js/'))
     .pipe(rename({suffix: '.min'}))
     .pipe(babel({
         presets: ['es2015']
@@ -87,7 +87,7 @@ gulp.task('foundation-js', function() {
     .pipe(uglify().on('error', function(e){
         console.log(e);
      }))
-    .pipe(gulp.dest('./content/themes/casper/assets/js/'))
+    .pipe(gulp.dest('./content/themes/salty/assets/js/'))
 });
 
 // Update Foundation with Bower and save to /vendor
