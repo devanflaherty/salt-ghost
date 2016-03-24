@@ -1,6 +1,8 @@
 // Connect Reveal
 $('#connect').hide();
+$('.close').hide();
 $( "#toggleConnect" ).click(function() {
+  $('.close').fadeIn('slow');
   $('html').addClass( "connectFixed" );
   $('#connect').fadeIn(function() {
     $('#connect .left-panel').addClass("visible");
