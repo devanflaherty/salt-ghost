@@ -2757,8 +2757,6 @@ h3 {
       #contentBody .flex-wrap .columns img {
         width: 100%;
         height: auto; }
-    #contentBody .flex-wrap:last-child {
-      margin-bottom: 80px; }
   #contentBody p + blockquote {
     margin: 80px 0 80px; }
   #contentBody blockquote {
@@ -2773,6 +2771,9 @@ h3 {
       line-height: 26px;
       padding: 0;
       margin: 0; }
+    #contentBody blockquote strong {
+      font-family: Georgia, serif;
+      font-weight: bold; }
 
 #team h3 {
   color: #fefefe; }

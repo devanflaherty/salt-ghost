@@ -758,9 +758,6 @@ $cbmargin : 80px;
         width: 100%; height: auto;
       }
     }
-    &:last-child {
-      margin-bottom: $cbmargin;
-    }
   }
   p + blockquote {
     margin: $cbmargin 0 $cbmargin;
@@ -777,6 +774,10 @@ $cbmargin : 80px;
       line-height: 26px;
       padding: 0;
       margin: 0;
+    }
+    strong {
+      font-family: $serif;
+      font-weight: bold;
     }
   }
 }
