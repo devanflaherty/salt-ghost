@@ -39,11 +39,15 @@ config = {
             host: '0.0.0.0',
             port: process.env.PORT
         },
-        aws: {
+        storage: {
+          active: 'ghost-s3',
+          'ghost-s3': {
             accessKeyId: process.env.AWS_KEY,
             secretAccessKey: process.env.AWS_SECRET,
             bucket: process.env.AWS_BUCKET,
-            region: process.env.AWS_REGION,
+            region: 'us-east-1',
+            assetHost: 's3_acces_url'
+          }
         }
     },
 
