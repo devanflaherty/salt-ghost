@@ -6,7 +6,7 @@ function getStorage(storageChoice) {
     var storagePath,
         storageConfig;
 
-    storageChoice = config.storage.active;
+    storageChoice = 's3';  
     storagePath = config.paths.storage;
     storageConfig = config.storage[storageChoice];
 
