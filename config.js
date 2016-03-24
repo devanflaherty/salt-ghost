@@ -44,9 +44,9 @@ config = {
           'ghost-s3': {
             accessKeyId: process.env.AWS_KEY,
             secretAccessKey: process.env.AWS_SECRET,
-            bucket: 'saltagency.com',
-            region: 'Oregon',
-            assetHost: 'http://saltagency.com.s3-website-us-west-2.amazonaws.com'
+            bucket: process.env.AWS_BUCKET,
+            region: process.env.AWS_REGION,
+            assetHost: process.env.AWS_HOST
           }
         }
     },
