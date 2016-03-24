@@ -2042,6 +2042,9 @@ html, body {
 body {
   background-color: #fff; }
 
+#skrollr-body {
+  width: 100%; }
+
 /************************
 
 ** UTILITY CLASSES
@@ -2137,6 +2140,7 @@ a.strip {
   width: 100%;
   height: 100%;
   background-size: cover !important;
+  background-position: center;
   -webkit-transform: scale(1.5);
   transform: scale(1.5);
   transition: opacity 1s ease;
@@ -2207,7 +2211,7 @@ h3 {
   @media screen and (min-width: 40em) {
     #header {
       padding-top: 0;
-      height: 580px; } }
+      min-height: 580px !important; } }
   #header nav#main-nav {
     padding: 0;
     text-align: right; }
@@ -2376,7 +2380,8 @@ h3 {
   height: 100%;
   background: #fefefe;
   transition: all 1s ease;
-  overflow: hidden; }
+  overflow: hidden;
+  display: none; }
   .full-nav.visible {
     padding-top: 120px;
     top: 0; }
@@ -2930,6 +2935,7 @@ h3 {
   -ms-flex-flow: row wrap;
   flex-flow: row wrap; }
   #connect .close {
+    display: none;
     position: absolute;
     z-index: 101;
     top: 40px;
@@ -2943,6 +2949,7 @@ h3 {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
     transition: all 0.5s ease;
+    display: none;
     -webkit-flex: 0 0 66.66667%;
     -ms-flex: 0 0 66.66667%;
     flex: 0 0 66.66667%;
@@ -2963,6 +2970,7 @@ h3 {
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
     transition: all 0.5s ease;
+    display: none;
     -webkit-flex: 0 0 100%;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
