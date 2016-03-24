@@ -44,7 +44,7 @@ config = {
           'ghost-s3': {
             accessKeyId: process.env.AWS_KEY,
             secretAccessKey: process.env.AWS_SECRET,
-            bucket: 'us-west-1',
+            bucket: process.env.AWS_BUCKET,
             region: process.env.AWS_REGION,
             assetHost: process.env.AWS_HOST
           }
