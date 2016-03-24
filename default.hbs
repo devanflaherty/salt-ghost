@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{! Document Settings }}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{! Page Meta }}
+    <title>SALT | {{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="{{asset "favicon.ico"}}">
+
+    {{! Styles'n'Scripts }}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/styles.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "fonts/gotham/stylesheet.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "fonts/flaticons/stylesheet.css"}}" />
+
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}} nav-closed Blog">
+
+    <div id="skrollr-body">
+        {{! Everything else gets inserted here }}
+        {{{body}}}
+
+      <footer id="footer">
+        <section class="row align-center align-middle">
+          <div class="columns branding shrink">
+            <p class="vision">Make Waves</p>
+            <h3>Salt</h3>
+            <p class="vision">Defy Reason</p>
+          </div>
+        </section>
+        <div class="site-footer">
+          <section class="poweredby text-center">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </div>
+      </footer>
+      {{>connect}}
+    </div>
+
+    {{!-- jQuery needs to come before `{{ghost_foot}}` so that jQuery can be used in code injection --}}
+    <script src="{{asset "js/jquery/dist/jquery.min.js"}}"></script>
+    {{! Ghost outputs important scripts and data with this tag }}
+    <script src="{{asset "js/foundation.min.js"}}" ></script>
+    <script src="{{asset "js/skrollr/dist/skrollr.min.js"}}"></script>
+    <script src="{{asset "/js/app.js"}}"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        var s = skrollr.init();
+        if (s.isMobile()) {
+            s.destroy();
+        }
+      };
+      $(".BlogNav").addClass("active");
+    </script>
+
+    {{ghost_foot}}
+
+    <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
+    {{! The main JavaScript file for Casper }}
+    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+
+</body>
+</html>
