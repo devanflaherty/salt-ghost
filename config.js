@@ -11,7 +11,7 @@ config = {
     // When running Ghost in the wild, use the production environment.
     // Configure your URL and mail settings here
     production: {
-        url: 'http://my-ghost-blog.com',
+        url: 'http://salt-ghost.herokuapp.com',
         mail: {},
         database: {
             client: 'postgres',
@@ -37,7 +37,7 @@ config = {
             region: 'Oregon',
             assetHost: 'http://saltagency.com.s3-website-us-west-2.amazonaws.com'
           }
-        },
+        }
     },
 
     // ### Development **(default)**
