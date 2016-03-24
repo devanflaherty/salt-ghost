@@ -45,7 +45,6 @@ config = {
             secretAccessKey: process.env.AWS_SECRET,
             bucket: process.env.AWS_BUCKET,
             region: process.env.AWS_REGION,
-          }
         }
     },
 
