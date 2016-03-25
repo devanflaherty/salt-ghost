@@ -5,47 +5,8 @@ $( "#contentBody p" ).has( "img" ).wrap( '<div class="row expanded collapse flex
 $( ".flex-wrap p" ).has( "img" ).contents().unwrap();
 
 var rowWrap = '<div class="row align-center content"><div class="small-11 medium-9 columns content-col"></div></div>';
-
-$('#contentBody > h2').each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
-$('#contentBody > h3').each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
-$('#contentBody > h4').each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
-$('#contentBody > blockquote').each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
-$("#contentBody > p").each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
+$('#contentBody').children().first().nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
+$('.flex-wrap').nextUntil('.flex-wrap').wrapAll(rowWrap);
 
 $(".flex-wrap").each(function(i) {
   $(this).has( "a" ).find("a").wrap( "<div class='columns'></div>" );
