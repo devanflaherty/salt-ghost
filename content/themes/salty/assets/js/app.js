@@ -77,10 +77,12 @@ $( "#contentBody p" ).has( "img" ).wrap( '<div class="row expanded collapse flex
 $( ".flex-wrap p" ).has( "img" ).contents().unwrap();
 
 var rowWrap = '<div class="row align-center content"><div class="small-11 medium-9 columns content-col"></div></div>';
-$('#contentBody').children().first().nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-$('.flex-wrap').nextUntil('.flex-wrap').wrapAll(rowWrap);
+var firstChild = $('#contentBody').children().first();
+
+firstChild.not(".flex-wrap").nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
 
 $(".flex-wrap").each(function(i) {
+  $(this).nextUntil('.flex-wrap').wrapAll(rowWrap);
   $(this).has( "a" ).find("a").wrap( "<div class='columns'></div>" );
   $(this).has( "img" ).find("img").wrap( "<div class='columns'></div>" );
   $(this).has( "a" ).find("a .columns").contents().unwrap();
