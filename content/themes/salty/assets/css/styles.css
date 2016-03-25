@@ -2204,6 +2204,7 @@ h3 {
   overflow: hidden;
   position: relative;
   min-height: 400px !important;
+  height: 100vh;
   padding-top: 20px;
   background: #fefefe; }
   #header.contrast-text {
