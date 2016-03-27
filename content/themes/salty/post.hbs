@@ -9,106 +9,105 @@
 {{>header}}
 
 <main id="main" role="main">
-    <article class="{{post_class}}">
-        <!-- <h2 class="post-title">
-          <strong>{{title}}</strong>
-        </h2>
-        <h4 class="hint post-details">
-          <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time> {{tags prefix=" on "}}
-        </h4> -->
-        <section id="contentBody">
-            {{content}}
-        </section>
-        <footer class="post-footer">
-          <div class="row expanded align-center small-pad">
-            <div class="columns text-center">
-              {{! Everything inside the #author tags pulls data from the author }}
-              {{#author}}
+  <article class="{{post_class}}">
+      <!-- <h2 class="post-title">
+        <strong>{{title}}</strong>
+      </h2>
+      <h4 class="hint post-details">
+        <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time> {{tags prefix=" on "}}
+      </h4> -->
+      <section id="contentBody">
+          {{content}}
+      </section>
+      <footer class="post-footer">
+        <div class="row expanded align-center small-pad">
+          <div class="columns text-center">
+            {{! Everything inside the #author tags pulls data from the author }}
+            {{#author}}
 
-                  {{#if image}}
-                  <figure class="author-image">
-                      <a class="img" href="{{url}}" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></a>
-                  </figure>
-                  {{/if}}
+                {{#if image}}
+                <figure class="author-image">
+                    <a class="img" href="{{url}}" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></a>
+                </figure>
+                {{/if}}
 
-                  <section>
-                      <h4 class="branded"><a href="{{url}}"><strong>{{name}}</strong></a></h4>
+                <section>
+                    <h4 class="branded"><a href="{{url}}"><strong>{{name}}</strong></a></h4>
 
-                      {{#if bio}}
-                          <p>{{bio}}</p>
-                      {{else}}
-                          <p>Read <a href="{{url}}">more posts</a> by this author.</p>
-                      {{/if}}
-                      <div class="author-meta">
-                          {{#if location}}<span class="author-location icon-location">{{location}}</span>{{/if}}
-                          {{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
-                      </div>
-                  </section>
+                    {{#if bio}}
+                        <p>{{bio}}</p>
+                    {{else}}
+                        <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+                    {{/if}}
+                    <div class="author-meta">
+                        {{#if location}}<span class="author-location icon-location">{{location}}</span>{{/if}}
+                        {{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
+                    </div>
+                </section>
 
-              {{/author}}
-            </div>
+            {{/author}}
           </div>
-          <div class="row expanded align-center secondary-bg small-pad-medium text-center">
-            <div class="columns">
-              <section class="share">
-                  <h3 class="branded">Share this post</h3>
-                  <a class="icon-twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
-                      onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                      <span class="hidden">Twitter</span>
-                  </a>
-                  <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
-                      onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                      <span class="hidden">Facebook</span>
-                  </a>
-                  <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
-                     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                      <span class="hidden">Google+</span>
-                  </a>
+        </div>
+        <div class="row expanded align-center secondary-bg small-pad-medium text-center">
+          <div class="columns">
+            <section class="share">
+                <h3 class="branded">Share this post</h3>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+          </div>
+        </div>
+
+        <aside id="readNext" class="read-next">
+            {{#next_post}}
+            <a class="read-next-story para-parent small-pad-medium" href="{{url}}">
+              {{#if image}}
+                <div class="parallax opaque invisible" style="background-image: url({{image}});"
+                data-bottom-top="background-position: 50% 50px;"
+                data-end="background-position: 50% -50px;"
+                data-anchor-target="#readNext"></div>
+              {{/if}}
+              <section class="post more">
+                <div class="row align-center">
+                  <div class="small-11 medium-9 columns">
+                    <h2><strong>{{title}}</strong></h2>
+                    <p>{{excerpt words="19"}}&hellip;</p>
+                  </div>
+                </div>
               </section>
-            </div>
-          </div>
-
-          <aside id="readNext" class="read-next">
-              {{#next_post}}
-              <a class="read-next-story para-parent small-pad-medium" href="{{url}}">
-                {{#if image}}
-                  <div class="parallax opaque invisible" style="background-image: url({{image}});"
-                  data-bottom-top="background-position: 50% 50px;"
-                  data-end="background-position: 50% -50px;"
-                  data-anchor-target="#readNext"></div>
-                {{/if}}
-                <section class="post more">
-                  <div class="row align-center">
-                    <div class="small-11 medium-9 columns">
-                      <h2><strong>{{title}}</strong></h2>
-                      <p>{{excerpt words="19"}}&hellip;</p>
-                    </div>
+            </a>
+            {{/next_post}}
+            {{#prev_post}}
+            <a class="read-next-story prev para-parent small-pad-medium" href="{{url}}">
+              {{#if image}}
+                <div class="parallax opaque invisible" style="background-image: url({{image}});"
+                data-bottom-top="background-position: 50% 50px;"
+                data-end="background-position: 50% -50px;"
+                data-anchor-target="#readNext"></div>
+              {{/if}}
+              <section class="post more">
+                <div class="row align-center">
+                  <div class="small-11 medium-9 columns">
+                    <h2><strong>{{title}}</strong></h2>
+                    <p>{{excerpt words="19"}}&hellip;</p>
                   </div>
-                </section>
-              </a>
-              {{/next_post}}
-              {{#prev_post}}
-              <a class="read-next-story prev para-parent small-pad-medium" href="{{url}}">
-                {{#if image}}
-                  <div class="parallax opaque invisible" style="background-image: url({{image}});"
-                  data-bottom-top="background-position: 50% 50px;"
-                  data-end="background-position: 50% -50px;"
-                  data-anchor-target="#readNext"></div>
-                {{/if}}
-                <section class="post more">
-                  <div class="row align-center">
-                    <div class="small-11 medium-9 columns">
-                      <h2><strong>{{title}}</strong></h2>
-                      <p>{{excerpt words="19"}}&hellip;</p>
-                    </div>
-                  </div>
-                </section>
-              </a>
-              {{/prev_post}}
-          </aside>
-        </footer>
-
-    </article>
+                </div>
+              </section>
+            </a>
+            {{/prev_post}}
+        </aside>
+      </footer>
+  </article>
 </main>
 
 {{/post}}
