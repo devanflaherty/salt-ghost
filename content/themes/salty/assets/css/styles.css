@@ -2301,23 +2301,6 @@ h3 {
     @media screen and (min-width: 40em) {
       #header .page-logo {
         width: 10%; } }
-  #header .go-down {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 45px;
-    margin: auto;
-    padding: 0; }
-    #header .go-down .go-down-icon {
-      width: 40px;
-      height: 40px;
-      display: block;
-      background-size: 100% auto;
-      background-position: left;
-      background-repeat: no-repeat;
-      transition: all 0.2s ease; }
 
 /************************
 
