@@ -3209,7 +3209,7 @@ margin on the iframe, cause it breaks stuff. */
   right: 0;
   bottom: 45px;
   margin: auto;
-  padding: 0;
+  padding: 0 !important;
   font-size: 35px;
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
@@ -3223,7 +3223,8 @@ margin on the iframe, cause it breaks stuff. */
     background-size: 100% auto;
     background-position: left;
     background-repeat: no-repeat;
-    transition: all 0.2s ease; }
+    transition: all 0.2s ease;
+    margin-left: -5px; }
     .go-down .go-down-icon:hover {
       -webkit-transform: scale(1.2);
       transform: scale(1.2);
