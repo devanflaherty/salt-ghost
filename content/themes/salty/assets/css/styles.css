@@ -3218,34 +3218,39 @@ margin on the iframe, cause it breaks stuff. */
 /* ==========================================================================
    4. General - The main styles for the the theme
    ========================================================================== */
-/* Create a bouncing scroll-down arrow on homepage with cover image */
-.scroll-down {
-  display: block;
-  position: absolute;
-  z-index: 100;
-  width: 40px;
+.go-down {
+  width: 45px;
   height: 40px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+  margin: auto;
+  padding: 0;
   font-size: 35px;
   text-align: center;
-  text-decoration: none;
   color: rgba(255, 255, 255, 0.7);
-  -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg);
   -webkit-animation: bounce 4s 2s infinite;
-  animation: bounce 4s 2s infinite;
-  margin-left: -5px; }
-
-/* Stop it bouncing and increase contrast when hovered */
-.scroll-down:hover {
-  color: #fff;
-  -webkit-animation: none;
-  animation: none;
-  -webkit-transform: rotate(-90deg) scale(1.2);
-  transform: rotate(-90deg) scale(1.2); }
+  animation: bounce 4s 2s infinite; }
+  .go-down .go-down-icon {
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-image: url(http://s3.amazonaws.com/saltagency.co/images/down-white.png);
+    background-size: 100% auto;
+    background-position: left;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease; }
+    .go-down .go-down-icon:hover {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+      color: #fff;
+      -webkit-animation: none;
+      animation: none; }
 
 /* Put a semi-opaque radial gradient behind the icon to make it more visible
    on photos which happen to have a light background. */
-.home-template .main-header:after {
+.home-template #header:after {
   display: block;
   content: " ";
   width: 150px;
@@ -3256,13 +3261,6 @@ margin on the iframe, cause it breaks stuff. */
   left: 50%;
   margin-left: -75px;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15) 0%, transparent 70%, transparent 100%); }
-
-/* Hide when there's no cover image or on page2+ */
-.no-cover .scroll-down,
-.no-cover.main-header:after,
-.archive-template .scroll-down,
-.archive-template .main-header:after {
-  display: none; }
 
 /* Appears in the top left corner of your home page */
 .blog-logo {
@@ -3282,14 +3280,14 @@ margin on the iframe, cause it breaks stuff. */
 
 /* Add subtle load-in animation for content on the home page */
 .home-template .page-title {
-  -webkit-animation: fade-in-down 0.6s;
-  animation: fade-in-down 0.6s;
+  -webkit-animation: fade-in- 0.6s;
+  animation: fade-in- 0.6s;
   -webkit-animation-delay: 0.2s;
   animation-delay: 0.2s; }
 
 .home-template .page-description {
-  -webkit-animation: fade-in-down 0.9s;
-  animation: fade-in-down 0.9s;
+  -webkit-animation: fade-in- 0.9s;
+  animation: fade-in- 0.9s;
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s; }
 
@@ -3620,69 +3618,56 @@ body:not(.post-template) .post-title {
   background: #222 no-repeat center center;
   background-size: cover;
   overflow: hidden; }
-
-.read-next-story:hover:before {
-  background: rgba(0, 0, 0, 0.8);
-  transition: all 0.2s ease; }
-
-.read-next-story:hover .post:before {
-  color: #222;
-  background: #fff;
-  transition: all 0.2s ease; }
-
-.read-next-story:before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: all 0.5s ease; }
-
-.read-next-story .post {
-  padding-top: 6rem;
-  padding-bottom: 6rem; }
-
-.read-next-story .post:before {
-  content: "Read This Next";
-  padding: 4px 10px 5px;
-  text-transform: uppercase;
-  font-size: 1.1rem;
-  font-family: 'GothamHTFBook', sans-serif;
-  color: rgba(255, 255, 255, 0.8);
-  border: rgba(255, 255, 255, 0.5) 1px solid;
-  border-radius: 4px;
-  transition: all 0.5s ease; }
-
-.read-next-story.prev .post:before {
-  content: "You Might Enjoy"; }
-
-.read-next-story h2 {
-  margin-top: 1rem;
-  color: #fff; }
-
-.read-next-story p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.8); }
-
-/* Special styles for posts with no cover images */
-.read-next-story.no-cover {
-  background: #f5f8fa; }
-
-.read-next-story.no-cover:before {
-  display: none; }
-
-.read-next-story.no-cover .post:before {
-  color: rgba(0, 0, 0, 0.5);
-  border-color: rgba(0, 0, 0, 0.2); }
-
-.read-next-story.no-cover h2 {
-  color: rgba(0, 0, 0, 0.8); }
-
-.read-next-story.no-cover p {
-  color: rgba(0, 0, 0, 0.5); }
+  .read-next-story:hover:before {
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 0.2s ease; }
+  .read-next-story:hover .post:before {
+    color: #222;
+    background: #fff;
+    transition: all 0.2s ease; }
+  .read-next-story:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.5s ease; }
+  .read-next-story .post {
+    padding-top: 6rem;
+    padding-bottom: 6rem; }
+    .read-next-story .post:before {
+      content: "View Case Study";
+      padding: 4px 10px 5px;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      font-family: "GothamHTFBook", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+      color: rgba(255, 255, 255, 0.8);
+      border: rgba(255, 255, 255, 0.5) 1px solid;
+      border-radius: 4px;
+      transition: all 0.5s ease;
+      letter-spacing: 3px; }
+  .read-next-story.prev .post:before {
+    content: "You Might Enjoy"; }
+  .read-next-story h2 {
+    margin-top: 1rem;
+    color: #fff; }
+  .read-next-story p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8); }
+  .read-next-story.no-cover {
+    background: #f5f8fa; }
+    .read-next-story.no-cover:before {
+      display: none; }
+    .read-next-story.no-cover .post:before {
+      color: rgba(0, 0, 0, 0.5);
+      border-color: rgba(0, 0, 0, 0.2); }
+    .read-next-story.no-cover h2 {
+      color: rgba(0, 0, 0, 0.8); }
+    .read-next-story.no-cover p {
+      color: rgba(0, 0, 0, 0.5); }
 
 /* if there are two posts without covers, put a border between them */
 .read-next-story.no-cover + .read-next-story.no-cover {
@@ -3811,7 +3796,7 @@ body:not(.post-template) .post-title {
    13. Animations
    ========================================================================== */
 /* Used to fade in title/desc on the home page */
-@-webkit-keyframes fade-in-down {
+@-webkit-keyframes fade-in- {
   0% {
     opacity: 0;
     -webkit-transform: translateY(-10px);
@@ -3821,7 +3806,7 @@ body:not(.post-template) .post-title {
     -webkit-transform: translateY(0);
     transform: translateY(0); } }
 
-@keyframes fade-in-down {
+@keyframes fade-in- {
   0% {
     opacity: 0;
     -webkit-transform: translateY(-10px);
@@ -3831,28 +3816,28 @@ body:not(.post-template) .post-title {
     -webkit-transform: translateY(0);
     transform: translateY(0); } }
 
-/* Used to bounce .scroll-down on home page */
+/* Used to bounce */
 @-webkit-keyframes bounce {
   0%, 10%, 25%, 40%, 50% {
-    -webkit-transform: translateY(0) rotate(-90deg);
-    transform: translateY(0) rotate(-90deg); }
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
   20% {
-    -webkit-transform: translateY(-10px) rotate(-90deg);
-    transform: translateY(-10px) rotate(-90deg); }
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px); }
   30% {
-    -webkit-transform: translateY(-5px) rotate(-90deg);
-    transform: translateY(-5px) rotate(-90deg); } }
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px); } }
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
-    -webkit-transform: translateY(0) rotate(-90deg);
-    transform: translateY(0) rotate(-90deg); }
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
   40% {
-    -webkit-transform: translateY(-10px) rotate(-90deg);
-    transform: translateY(-10px) rotate(-90deg); }
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px); }
   60% {
-    -webkit-transform: translateY(-5px) rotate(-90deg);
-    transform: translateY(-5px) rotate(-90deg); } }
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px); } }
 
 /* ==========================================================================
    End of file. Animations should be the last thing here. Do not add stuff
