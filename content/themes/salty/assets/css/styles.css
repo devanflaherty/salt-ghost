@@ -2301,6 +2301,36 @@ h3 {
     @media screen and (min-width: 40em) {
       #header .page-logo {
         width: 10%; } }
+  #header .go-down {
+    width: 45px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 45px;
+    margin: auto;
+    padding: 0 !important;
+    font-size: 35px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    -webkit-animation: bounce 4s 2s infinite;
+    animation: bounce 4s 2s infinite; }
+    #header .go-down .go-down-icon {
+      width: 40px;
+      height: 40px;
+      display: block;
+      background-image: url(http://s3.amazonaws.com/saltagency.co/images/down-white.png);
+      background-size: 100% auto;
+      background-position: left;
+      background-repeat: no-repeat;
+      transition: all 0.2s ease;
+      margin-left: -5px; }
+      #header .go-down .go-down-icon:hover {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        color: #fff;
+        -webkit-animation: none;
+        animation: none; }
 
 /************************
 
@@ -3201,51 +3231,6 @@ margin on the iframe, cause it breaks stuff. */
 /* ==========================================================================
    4. General - The main styles for the the theme
    ========================================================================== */
-.go-down {
-  width: 45px;
-  height: 40px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 45px;
-  margin: auto;
-  padding: 0 !important;
-  font-size: 35px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-  -webkit-animation: bounce 4s 2s infinite;
-  animation: bounce 4s 2s infinite; }
-  .go-down .go-down-icon {
-    width: 40px;
-    height: 40px;
-    display: block;
-    background-image: url(http://s3.amazonaws.com/saltagency.co/images/down-white.png);
-    background-size: 100% auto;
-    background-position: left;
-    background-repeat: no-repeat;
-    transition: all 0.2s ease;
-    margin-left: -5px; }
-    .go-down .go-down-icon:hover {
-      -webkit-transform: scale(1.2);
-      transform: scale(1.2);
-      color: #fff;
-      -webkit-animation: none;
-      animation: none; }
-
-/* Put a semi-opaque radial gradient behind the icon to make it more visible
-   on photos which happen to have a light background. */
-.home-template #header:after {
-  display: block;
-  content: " ";
-  width: 150px;
-  height: 130px;
-  border-radius: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left: -75px;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15) 0%, transparent 70%, transparent 100%); }
-
 /* Appears in the top left corner of your home page */
 .blog-logo {
   display: block;

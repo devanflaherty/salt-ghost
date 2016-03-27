@@ -293,6 +293,35 @@ h3 {
       width: 10%;
     }
   }
+  .go-down {
+    width: 45px;
+    height: 40px;
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 45px;
+    margin: auto;
+    padding: 0!important;
+    font-size: 35px;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    animation: bounce 4s 2s infinite;
+    .go-down-icon {
+      width: 40px;
+      height: 40px;
+      display: block;
+      background-image: url(http://s3.amazonaws.com/saltagency.co/images/down-white.png);
+      background-size: 100% auto;
+      background-position: left;
+      background-repeat: no-repeat;
+      transition: all 0.2s ease;
+      margin-left: -5px;
+      &:hover {
+        transform: scale(1.2);
+        color: #fff;
+        animation: none;
+      }
+    }
+  }
 }
 
 /************************
