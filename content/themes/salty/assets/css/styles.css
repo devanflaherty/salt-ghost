@@ -2691,14 +2691,21 @@ h3 {
 #contentBody {
   max-width: 100%;
   overflow: hidden; }
-  #contentBody .content .columns > p:last-of-type {
-    margin-bottom: 0; }
   #contentBody .content .columns > :only-child {
-    margin: 80px 0; }
+    margin: 40px 0; }
+    @media screen and (min-width: 40em) {
+      #contentBody .content .columns > :only-child {
+        margin: 80px 0; } }
   #contentBody .content .columns > :last-child {
-    margin-bottom: 80px !important; }
+    margin-bottom: 40px; }
+    @media screen and (min-width: 40em) {
+      #contentBody .content .columns > :last-child {
+        margin-bottom: 80px; } }
   #contentBody .content .columns > :first-child {
-    margin-top: 80px !important; }
+    margin-top: 40px; }
+    @media screen and (min-width: 40em) {
+      #contentBody .content .columns > :first-child {
+        margin-top: 80px; } }
   #contentBody h1 a, #contentBody h2 a, #contentBody h3 a, #contentBody h4 a, #contentBody h5 a {
     cursor: text;
     color: #20272B; }
@@ -2730,6 +2737,8 @@ h3 {
       font-weight: 200; }
     #contentBody p a {
       font-family: "GothamHTFMedium", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif; }
+  #contentBody pre {
+    margin-bottom: 40px; }
   #contentBody .flex-video {
     margin: 80px 0; }
   #contentBody .flex-wrap {
@@ -3274,11 +3283,7 @@ margin on the iframe, cause it breaks stuff. */
 .opaque {
   opacity: 0.5; }
 
-body:not(.post-template) .post-title {
-  font-size: 3.6rem; }
-
 .post-title {
-  font-size: 60px;
   line-height: 50px; }
   .post-title a {
     text-decoration: none;

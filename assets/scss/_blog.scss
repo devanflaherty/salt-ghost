@@ -288,11 +288,7 @@ margin on the iframe, cause it breaks stuff. */
 .opaque {
   opacity: 0.5;
 }
-body:not(.post-template) .post-title {
-    font-size: 3.6rem;
-}
 .post-title {
-  font-size: 60px;
   line-height: 50px;
   a {
       text-decoration: none;

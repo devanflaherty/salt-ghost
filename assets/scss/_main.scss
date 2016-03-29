@@ -711,17 +711,23 @@ $cbmargin : 80px;
   max-width: 100%;
   overflow: hidden;
   .content .columns {
-    & > p:last-of-type {
-      margin-bottom: 0
-    }
     & > :only-child {
-      margin: $cbmargin 0;
+      margin: $cbmargin/2 0;
+      @include breakpoint(medium) {
+        margin: $cbmargin 0;
+      }
     }
     & > :last-child {
-      margin-bottom: $cbmargin!important;
+      margin-bottom: $cbmargin/2;
+      @include breakpoint(medium) {
+        margin-bottom: $cbmargin;
+      }
     }
     & > :first-child {
-      margin-top: $cbmargin!important;
+      margin-top: $cbmargin/2;
+      @include breakpoint(medium) {
+        margin-top: $cbmargin;
+      }
     }
   }
   h1, h2, h3, h4, h5 {
@@ -761,6 +767,9 @@ $cbmargin : 80px;
       font-weight: 200;
     }
     a {font-family: $sans600;}
+  }
+  pre {
+    margin-bottom: $cbmargin/2;
   }
   .flex-video {
     margin: $cbmargin 0;
