@@ -17,12 +17,12 @@
     {{! Styles'n'Scripts }}
     <link rel="stylesheet" type="text/css" href="{{asset "css/styles.css"}}" />
     <link rel="stylesheet" type="text/css" href="{{asset "fonts/gotham/stylesheet.css"}}" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="{{asset "fonts/flaticons/stylesheet.css"}}" />
 
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
 </head>
-<body class="{{body_class}} nav-closed Blog">
+<body class="{{body_class}} Blog">
 
     <div id="skrollr-body">
         {{! Everything else gets inserted here }}
@@ -36,9 +36,6 @@
             <p class="vision">Defy Reason</p>
           </div>
         </section>
-        <div class="site-footer">
-          <section class="poweredby text-center">Proudly published with <a href="https://ghost.org">Ghost</a></section>
-        </div>
       </footer>
       {{>connect}}
     </div>
@@ -62,8 +59,15 @@
     {{ghost_foot}}
 
     <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
-    {{! The main JavaScript file for Casper }}
-    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-75737789-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 
 </body>
 </html>

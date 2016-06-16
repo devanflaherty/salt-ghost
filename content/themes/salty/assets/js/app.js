@@ -1,7 +1,67 @@
+/**
+ * Main JS file for Casper behaviours
+ */
+
+/* globals jQuery, document */
+(function ($, undefined) {
+    "use strict";
+
+    var $document = $(document);
+
+    $document.ready(function () {
+
+        var $postContent = $(".post-content");
+        $postContent.fitVids();
+
+        $(".scroll-down").arctic_scroll();
+
+        $(".menu-button, .nav-cover, .nav-close").on("click", function(e){
+            e.preventDefault();
+            $("body").toggleClass("nav-opened nav-closed");
+        });
+
+    });
+
+    // Arctic Scroll by Paul Adam Davis
+    // https://github.com/PaulAdamDavis/Arctic-Scroll
+    $.fn.arctic_scroll = function (options) {
+
+        var defaults = {
+            elem: $(this),
+            speed: 500
+        },
+
+        allOptions = $.extend(defaults, options);
+
+        allOptions.elem.click(function (event) {
+            event.preventDefault();
+            var $this = $(this),
+                $htmlBody = $('html, body'),
+                offset = ($this.attr('data-offset')) ? $this.attr('data-offset') : false,
+                position = ($this.attr('data-position')) ? $this.attr('data-position') : false,
+                toMove;
+
+            if (offset) {
+                toMove = parseInt(offset);
+                $htmlBody.stop(true, false).animate({scrollTop: ($(this.hash).offset().top + toMove) }, allOptions.speed);
+            } else if (position) {
+                toMove = parseInt(position);
+                $htmlBody.stop(true, false).animate({scrollTop: toMove }, allOptions.speed);
+            } else {
+                $htmlBody.stop(true, false).animate({scrollTop: ($(this.hash).offset().top) }, allOptions.speed);
+            }
+        });
+
+    };
+})(jQuery);
+
 // Connect Reveal
 $('#connect').hide();
 $( "#toggleConnect" ).click(function() {
+  $('.close').fadeIn('slow');
   $('html').addClass( "connectFixed" );
+  $('#connect .left-panel').show();
+  $('#connect .right-panel').show();
   $('#connect').fadeIn(function() {
     $('#connect .left-panel').addClass("visible");
     $('#connect .right-panel').addClass("visible");
@@ -15,9 +75,10 @@ $( ".close" ).click(function() {
   });
 });
 
-// FULL HEIGHT HEADER
+// FULL HEIGHT HEADER & PARALLAX FADE
 $(function() {
   resizeDiv();
+  $('.parallax').removeClass("invisible");
 });
 window.onresize = function(event) {
   resizeDiv();
@@ -73,49 +134,12 @@ $( "#contentBody p" ).has( "img" ).wrap( '<div class="row expanded collapse flex
 $( ".flex-wrap p" ).has( "img" ).contents().unwrap();
 
 var rowWrap = '<div class="row align-center content"><div class="small-11 medium-9 columns content-col"></div></div>';
+var firstChild = $('#contentBody').children().first();
 
-$('#contentBody > h2').each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
-$('#contentBody > h3').each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
-$('#contentBody > h4').each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
-$('#contentBody > blockquote').each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
-$("#contentBody > p").each(function() {
-  if ($(this).parent(".content-col").length) {
-  } else if ($(this).next(".content").length) {
-    $(this).next(".content").find(".content-col").prepend( $( this ) );
-  } else {
-    $(this).nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
-  }
-});
+firstChild.not(".flex-wrap").nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
 
 $(".flex-wrap").each(function(i) {
+  $(this).nextUntil('.flex-wrap').wrapAll(rowWrap);
   $(this).has( "a" ).find("a").wrap( "<div class='columns'></div>" );
   $(this).has( "img" ).find("img").wrap( "<div class='columns'></div>" );
   $(this).has( "a" ).find("a .columns").contents().unwrap();

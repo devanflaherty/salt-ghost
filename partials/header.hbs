@@ -1,0 +1,64 @@
+<header id="header" class="flex expanded align-center contrast-text">
+  {{#if image}}
+    <div class="parallax opaque invisible" style="background-image: url({{image}});"
+    data-top="background-position: 50% 50px;"
+    data-top-bottom="background-position: 50% -50px;"
+    data-anchor-target="#header"></div>
+  {{else if @blog.cover}}
+  <div class="parallax invisible" style="background-image: url({{@blog.cover}});"
+  data-top="background-position: 50% 50px;"
+  data-top-bottom="background-position: 50% -50px;"
+  data-anchor-target="#header"></div>
+  {{/if}}
+
+  <section class="row align-center expanded">
+    <nav id="main-nav" class="small-6 medium-12 columns small-order-2 medium-order-1">
+      <ul class="show-for-medium">
+        {{navigation}}
+        <li class="show-for-medium"><a id="toggleConnect" href="#">connect</a></li>
+      </ul>
+      <a class="nav-toggle hide-for-medium" href="#"><span></span></a>
+    </nav>
+
+    <div id="headline" class="small-6 medium-12 columns small-order-1 medium-order-2">
+      <h1 class="logo medium-text-center"
+      data-0="transform: translate(0px, 0px);"
+      data-top-bottom="transform: translate(0px, -240px);"
+      data-anchor-target="#header">
+        <a href="http://salt.heroku.com">SALT</a>
+      </h1>
+
+      <p class="subheader show-for-medium"
+      data-0="transform: translate(0px, 0px);"
+      data-top-bottom="transform: translate(0px, -180px);"
+      data-anchor-target="#header">
+        {{#if title}}
+          <strong>{{title}}</strong> <br>
+          {{date format="DD MMMM YYYY"}}
+        {{ else }}
+          {{@blog.description}}
+        {{/if}}
+      </p>
+    </div>
+
+    <div class="small-12 small-order-3 hide-for-medium">
+      <p class="subheader">
+        {{#if title}}
+          <strong>{{title}}</strong> <br>
+          {{date format="DD MMMM YYYY"}}
+        {{ else }}
+          {{@blog.description}}
+        {{/if}}
+      </p>
+    </div>
+  </section>
+
+  <div class="go-down"
+  data-0="transform: translate(0px, 0px);"
+  data-top-bottom="transform: translate(0px, -180px);"
+  data-anchor-target="#header">
+    <a href="#main" class="go-down-icon"><span class="hidden">Scroll Down</span></a>
+  </div>
+</header>
+
+{{>full-nav}}
