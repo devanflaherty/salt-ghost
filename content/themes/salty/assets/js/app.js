@@ -268,6 +268,23 @@ $('.para-parent .parallax').each(function(){
   .addTo(controller);
 });
 
+var tween_share = new TimelineMax()
+.staggerFromTo('#share-links div', 2, {
+  transform: 'translate(0px, 100px)'
+}, {
+  transform: 'translate(0px, 0px)'
+}, 0.33)
+;
+
+var scene = new ScrollMagic.Scene({
+  triggerElement: "#share-links",
+  triggerHook: "onEnter",
+  duration: "50%"
+})
+.setTween(tween_share)
+// .addIndicators({name: "instagram"})
+.addTo(controller);
+
 //Tweens
 var tween_header = new TimelineMax()
   .fromTo('#header .overlay', 1, {
@@ -294,7 +311,7 @@ var tween_header = new TimelineMax()
 
 var tween_header_parallax = TweenMax
 .fromTo('header .parallax', 1, {
-  transform: 'translate(0px, -50px) scale(1.5)'
+  transform: 'translate(0px, -75px) scale(1.5)'
 }, {
   transform: 'translate(0px, 150px) scale(1.5)', ease: Linear.easeNone
 });

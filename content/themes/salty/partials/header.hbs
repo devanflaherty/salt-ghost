@@ -1,4 +1,4 @@
-<header id="header" class="flex expanded align-center contrast-text {{#is "home"}}header-home{{/is}}">
+<header id="header" class="flex expanded align-center contrast-text blog-header">
 {{#if image}}
   <div class="parallax opaque invisible" style="background-image: url({{image}});"></div>
 {{else if @blog.cover}}
@@ -13,48 +13,14 @@
       </ul>
       <a class="nav-toggle hide-for-medium" href="#"><span></span></a>
     </nav>
-    {{#is "home"}}
-      <div id="headline" class="small-6 medium-10 columns small-order-1 medium-order-2 flex">
-        <div class="page-links">
-          <h1 class="logo">Salt</h1>
-          {{#if title}}
-            <small class="show-for-medium">{{date format="DD MMMM YYYY"}}</small>
-          {{/if}}
-        </div><!--close page-links-->
-        <div class="subheader-wrap">
-          <p class="subheader show-for-medium">
-            {{#if title}}
-              {{title}}
-            {{ else }}
-              {{@blog.description}}
-            {{/if}}
-          </p>
-        </div><!--close subheader-wrap -->
-      </div><!-- close headline-->
-      <div class="small-12 small-order-3 hide-for-medium">
-        <p class="subheader">
-          {{#if title}}
-            {{title}}
-          {{ else }}
-            {{@blog.description}}
-          {{/if}}
-        </p>
-      </div>
-    {{else}}
-      <div id="headline" class="small-6 medium-10 large-9 columns small-order-1 medium-order-2 flex">
-        <div class="page-links post-logo" style="border: none!important;">
-          <h1 class="logo post-logo">Salt</h1>
-        </div>
-        <div></div>
-      </div>
-    {{/is}}
-  </section>
 
-  {{#is "home"}}
-    <div class="go-down">
-      <a href="#main" class="go-down-icon"><span class="hidden">Scroll Down</span></a>
+    <div id="headline" class="small-6 {{#is "home" }}medium-9{{else}}medium-10{{/is}} large-9 columns small-order-1 medium-order-2 flex">
+      <div class="page-links post-logo" style="border: none!important;">
+        <h1 class="logo post-logo">Salt{{#is 'home'}} <span>|</span> Blog{{/is}}</h1>
+      </div>
+      <div></div>
     </div>
-  {{/is}}
+  </section>
 </header>
 
 {{>full-nav}}

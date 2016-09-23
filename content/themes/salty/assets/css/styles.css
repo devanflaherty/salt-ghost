@@ -3388,29 +3388,32 @@ margin on the iframe, cause it breaks stuff. */
     letter-spacing: -.25px;
     word-spacing: normal !important; }
 
-#header:not(.header-home) {
-  min-height: 200px !important;
+#header.blog-header {
+  min-height: 150px !important;
   height: auto !important; }
   @media screen and (min-width: 40em) {
-    #header:not(.header-home) {
+    #header.blog-header {
       min-height: 300px !important; } }
   @media screen and (max-width: 39.9375em) {
-    #header:not(.header-home) section {
+    #header.blog-header section {
       max-width: 100%;
       width: 100%; } }
   @media screen and (min-width: 40em) {
-    #header:not(.header-home) section {
+    #header.blog-header section {
       -ms-flex: 1 100%;
       flex: 1 100%; }
-    #header:not(.header-home) #headline {
-      position: relative; }
-      #header:not(.header-home) #headline .page-links {
+    #header.blog-header #headline {
+      position: relative;
+      width: 100%; }
+      #header.blog-header #headline .page-links {
         padding: 0; }
-        #header:not(.header-home) #headline .page-links h1.logo.post-logo {
+        #header.blog-header #headline .page-links h1.logo.post-logo {
           margin: 0 0 0px !important;
-          font-size: 120px !important;
+          font-size: 100px !important;
           line-height: 1 !important;
-          text-align: left; } }
+          text-align: left; }
+          #header.blog-header #headline .page-links h1.logo.post-logo span {
+            color: #195fed !important; } }
 
 .opaque {
   opacity: 0.5; }
@@ -3447,7 +3450,7 @@ margin on the iframe, cause it breaks stuff. */
   display: inline-block;
   margin-left: 8px;
   padding-left: 12px;
-  border-left: #222220 2px solid;
+  border-left: #6090f3 2px solid;
   white-space: nowrap; }
 
 .post-details {
@@ -3493,8 +3496,11 @@ margin on the iframe, cause it breaks stuff. */
 
 .post-template .post-date {
   padding: 0;
-  margin: 0;
-  border: none; }
+  margin-bottom: 20px !important;
+  border-left: 0px;
+  font-size: 16px;
+  color: #9EA4AA;
+  border-color: #9EA4AA; }
 
 /* Stop elements, such as img wider than the post content, from
    creating horizontal scroll - slight hack due to imperfections

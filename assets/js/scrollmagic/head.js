@@ -24,7 +24,7 @@ var tween_header = new TimelineMax()
 
 var tween_header_parallax = TweenMax
 .fromTo('header .parallax', 1, {
-  transform: 'translate(0px, -50px) scale(1.5)'
+  transform: 'translate(0px, -75px) scale(1.5)'
 }, {
   transform: 'translate(0px, 150px) scale(1.5)', ease: Linear.easeNone
 });

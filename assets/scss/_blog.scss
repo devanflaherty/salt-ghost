@@ -303,8 +303,8 @@ margin on the iframe, cause it breaks stuff. */
   }
 }
 
-#header:not(.header-home) {
-  min-height: 200px!important;
+#header.blog-header {
+  min-height: 150px!important;
   height: auto!important;
   @include breakpoint(medium) {
     min-height: 300px!important;
@@ -321,13 +321,17 @@ margin on the iframe, cause it breaks stuff. */
     }
     #headline {
       position: relative;
+      width: 100%;
       .page-links {
         padding: 0;
         h1.logo.post-logo {
           margin: 0 0 0px!important;
-          font-size: 120px!important;
+          font-size: 100px!important;
           line-height: 1!important;
           text-align: left;
+          span {
+            color: $primaryColor!important;
+          }
         }
       }
     }
@@ -371,7 +375,7 @@ margin on the iframe, cause it breaks stuff. */
     display: inline-block;
     margin-left: 8px;
     padding-left: 12px;
-    border-left: $black 2px solid;
+    border-left: lighten($primary-color, 15%) 2px solid;
     white-space: nowrap;
 }
 .post-details {
@@ -423,8 +427,11 @@ margin on the iframe, cause it breaks stuff. */
 
 .post-template .post-date {
     padding: 0;
-    margin: 0;
-    border: none;
+    margin-bottom: 20px!important;
+    border-left: 0px;
+    font-size: 16px;
+    color: $medium-gray;
+    border-color: $medium-gray;
 }
 
 /* Stop elements, such as img wider than the post content, from

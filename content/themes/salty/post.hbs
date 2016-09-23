@@ -11,17 +11,17 @@
 <main id="main" role="main">
   <article class="{{post_class}}">
       <section id="contentBody">
+        <h6 class="post-date">
+          <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMMM DD, YYYY"}}</time> {{tags prefix=" on "}}
+        </h6>
         <h2>{{title}}</h2>
-        <!-- <h6>
-          <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time> {{tags prefix=" on "}}
-        </h6> -->
         {{content}}
       </section>
       <footer class="post-footer">
         <section class="share">
           <div class="row align-middle align-center">
             <div class="small-8 medium-4 columns">
-              <div class="flex expanded columns text-center">
+              <div id="share-links" class="flex expanded columns text-center">
                 <div>
                   <a class="link" href="https://twitter.com/intent/tweet?text={{encode title}}&amp;url={{url absolute="true"}}"
                       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
@@ -44,7 +44,6 @@
             </div>
           </div>
         </section>
-
 
         <aside id="readNext" class="read-next">
             {{#next_post}}
