@@ -1,10 +1,4 @@
 // Mobile Nav
-// Before the page load the nav is visible and wonky this was a quick fix
-$('.full-nav').hide();
-$(window).load(function() {
-  $(".full-nav").show();
-});
-
 // Where the magic happens
 $( ".nav-toggle" ).click(function() {
   $(this).toggleClass( "active" );

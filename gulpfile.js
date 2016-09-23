@@ -36,7 +36,8 @@ gulp.task('site-js', function() {
   return gulp.src([
 
            // Grab your custom scripts
-  		  './assets/js/scripts/*.js'
+  		  './assets/js/scripts/*.js',
+        './assets/js/scrollmagic/*.js'
 
   ])
     .pipe(plumber())
@@ -109,6 +110,9 @@ gulp.task('watch', function() {
 
   // Watch site-js files
   gulp.watch('./assets/js/scripts/*.js', ['site-js']);
+
+  // Watch scrollmagic files
+  gulp.watch('./assets/js/scrollmagic/*.js', ['site-js']);
 
   // Watch foundation-js files
   gulp.watch('./vendor/foundation-sites/js/*.js', ['foundation-js']);

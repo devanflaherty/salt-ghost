@@ -9,9 +9,6 @@ html, body {
 body {
   background-color: #fff;
 }
-#skrollr-body {
-  width: 100%;
-}
 
 
 /************************
@@ -28,6 +25,9 @@ body {
 .secondary-bg {
   background-color: $secondaryColor;
 }
+.tertiary-bg {
+  background-color: $tertiaryColor;
+}
 .white-bg {
   background-color: $white;
 }
@@ -36,24 +36,40 @@ body {
 }
 .contrast-text {
   h1, h2, h3, h4, h5, h6, p, blockquote, span, a {
-    color: $white!important;
+    color: $offWhite!important;
   }
-  h1.logo.black a {
+  h1.logo.black {
     color: $black!important;
+  }
+  h6 {
+    border-color: $offWhite;
+  }
+  .subheader {
+    color: $white!important;
+    border-color: $offWhite!important;
+  }
+  a.link {
+    color: $offWhite;
+    border-color: $offWhite!important;
   }
   .nav-toggle {
     span:before, span:after {
-      background: $white!important;
+      background: $offWhite!important;
     }
     &.active span:before, &.active span:after  {
       background: $black!important;
+    }
+  }
+  .go-down {
+    .go-down-icon {
+      background-image: url(/images/down-white.png)!important;
     }
   }
 }
 
 // BUTTON
 .button {
-  padding: 18px 26px;
+  padding: 12px 26px;
   font-family: $sans800;
   font-size: 14px;
   color: $black;
@@ -61,14 +77,18 @@ body {
   line-height: 18px;
   text-transform: uppercase;
   display: inline-block;
-  border-radius: 4px;
   transition: all 0.2s ease;
+  background: none!important;
   &.white {
     background-color: $offWhite!important;
     &:hover {
       background-color: darken($offWhite, 10%)!important;
     }
   }
+}
+p a {
+ font-family: $sans600;
+ transition: all 0.25s ease;
 }
 a.strip {
   font-size: 15px;
@@ -121,30 +141,42 @@ a.strip {
 .para-parent {
   position: relative;
   overflow: hidden;
+  .row {
+    position: relative;
+  }
 }
 .parallax {
   position: absolute;
   top: 0;
   left:0;
   right:0;
-  z-index: 0;
   width: 100%;
   height: 100%;
   background-size: cover!important;
   background-position: center;
   transform: scale(1.5);
-  transition: opacity 1s ease;
   opacity: 1;
+  transition: opacity 1s ease;
+  @include breakpoint(small only) {
+  //  background-position: 50% 0px!important;
+  //  transform: scale(1);
+  }
   &.invisible {
     opacity: 0;
-  }
-  @include breakpoint(small only) {
-    background-position: 50% 0px!important;
-    transform: scale(1);
   }
 }
 .cover-bg {
   background-size: cover!important;
+}
+.overlay {
+  opacity: 0;
+  background: $primaryColor;
+  position: absolute;
+  top: 0;
+  left:0;
+  right:0;
+  width: 100%;
+  height: 100%;
 }
 
 /************************
@@ -152,41 +184,90 @@ a.strip {
 ** TYPOGRAPHY CLASSES
 
 *************************/
+a.link {
+  font-family: $sans600;
+  border-bottom: 2px solid $black;
+  color: $black;
+  padding-bottom: 3px;
+  transition: all 0.25s ease;
+  &:hover {
+    padding-right: 30px;
+  }
+}
 h1, h2, h3, h4, h5 {
-  strong {
-    font-family: $sans800;
+  &.sans {
+    font-family: $sans600;
     font-weight: 200;
+    strong {
+      font-family: $sans800;
+      font-weight: 200;
+    }
   }
 }
 h2 {
-  font-size: 42px;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  line-height: 36px;
+  letter-spacing: 1.5px;
+  text-transform: capitalize;
+  font-size: 90px;
+  line-height: 80px;
   @include breakpoint(large) {
-    font-size: 66px;
-    line-height: 56px;
-    letter-spacing: -3px;
+    font-size: 120px;
+    line-height: 110px;
+  }
+  strong {
+    font-family: $serif;
+    color: $black;
+  }
+  span {
+    color: $primary-color;
+  }
+  &.brand-vision {
+    font-size: 70px;
+    line-height: 60px;
+    @include breakpoint(large) {
+      font-size: 90px;
+      line-height: 80px;
+    }
   }
 }
 h3 {
   color: $black;
-  font-size: 26px;
-  letter-spacing: 6px;
-  text-transform: uppercase;
+  font-size: 50px;
+  line-height: 45px;
   @include breakpoint(medium) {
-    font-size: 30px;
-    letter-spacing: 8px;
+    font-size: 80px;
+    line-height: 70px;
   }
+  @include breakpoint(large) {
+    font-size: 100px;
+    line-height: 90px;
+  }
+}
+h6 {
+  font-size: 20px;
+  font-family: $sans600;
+  padding-top: 3px;
+  letter-spacing: -1px;
+  display: inline-block;
+  border-top: 2px solid $black;
 }
 .serif {
   font-family: $serif;
 }
+.sans {
+  font-family: $sans400;
+}
 .hint {
   color: $medium-gray;
-  font-family: $serif;
-  font-style: italic;
-  margin: 0;
+  font-family: $sans400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  @include breakpoint(medium) {
+    font-size: 18px;
+  }
+}
+.iphone .hint,.ipad .hint {
+  margin: 0 0 20px;
 }
 
 /************************
@@ -200,17 +281,22 @@ h3 {
   min-height: 400px!important;
   height:100vh;
   padding-top: 20px;
-  background: $white;
-  &.contrast-text {
-    background: black;
-  }
+  background: $offWhite;
   @include breakpoint(medium) {
     padding-top: 0;
     min-height: 580px!important;
   }
+  &.contrast-text {
+    background: #000;
+  }
   nav#main-nav {
+    position: relative;
+    z-index: 100;
     padding: 0;
     text-align: right;
+    @include breakpoint(small only) {
+      height: 50px;
+    }
     @include breakpoint(medium) {
       padding: 32px 0;
     }
@@ -223,16 +309,15 @@ h3 {
         flex: 0 1 auto;
         margin: 0 18px;
         a {
-          font-size: 13.5px;
-          text-transform: uppercase;
-          letter-spacing: 4.75px;
+          font-size: 14px;
+          letter-spacing: 5px;
           color: $black;
           border-bottom: 2px solid transparent;
           transition: all 0.5s ease;
           font-family: $sans600;
+          text-transform: uppercase;
           opacity: 0.9;
           position: relative;
-          z-index: 20;
           &:hover {
             border-bottom: 2px solid $primaryColor;
             opacity: 1;
@@ -246,43 +331,130 @@ h3 {
       }
     }
   }
-  #headline {
-    h1.logo {
-      position: relative;
-      z-index: 100;
-      @include breakpoint(small only) {
-        transform: translate(0px)!important;
+  .project #headline {
+    @include flex-align(center, stretch);
+    .page-links {
+      @include flex();
+      @include flex-align(left, bottom);
+      @include flex-grid-column(6);
+      border-bottom: 4px solid transparent;
+      @include breakpoint(medium) {
+        border-bottom: 4px solid $primary-color;
+        text-align: left;
+        @include flex-grid-column(7);
       }
-      a {
-        font-family: $sans800;
-        text-transform: uppercase;
-        color: $black;
-        font-size: 40px;
-        letter-spacing: 12px;
+    }
+    h1.logo {
+      @include breakpoint(medium) {
+        margin-bottom: -10px!important;
+        font-size: 60px!important;
+        line-height: 60px;
+        margin-left: 0;
+      }
+    }
+    .subheader-wrap {
+      @include breakpoint(medium) {
+        @include flex-grid-column(7);
+        border-left: none;
+      }
+    }
+    p.subheader {
+      font-size: 100px;
+      line-height: 80px;
+      padding: 20px 0 0px;
+      word-spacing: 9999999px;
+      @include breakpoint(medium) {
+        font-size: 100px;
         line-height: 80px;
-        margin-left: 20px;
-        transition: all 0.5s ease;
-        &:hover {
-          transform: scale(1.2);
+      }
+    }
+  }
+  #headline {
+    @include breakpoint(small only) {
+      height: 50px;
+    }
+    @include breakpoint(medium) {
+      @include flex-align(center, middle);
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      margin: auto;
+      max-height: 400px;
+      z-index: 200;
+    }
+    .page-links {
+      z-index: 400;
+      @include breakpoint(medium) {
+        text-align: right;
+        @include flex-grid-column(6);
+      }
+      .links {
+        margin-right: 20px;
+        a {
+          display: inline-block;
+          margin-top: 8px;
         }
+      }
+      h1.logo {
+        font-family: $serif;
+        color: $black;
+        transform: translate(0px)!important;
+        position: relative;
+        text-transform: capitalize;
+        color: $black;
+        font-size: 50px;
+        letter-spacing: 1px;
+        line-height: 60px;
+        transition: all 0.5s ease;
+        display: block;
         @include breakpoint(medium) {
+          margin-bottom: 30px;
+          margin-right: 20px;
           font-size: 100px;
-          letter-spacing: 22px;
+          line-height: 80px;
           margin-left: 0;
         }
       }
     }
   }
+  .subheader-wrap {
+    @include breakpoint(medium) {
+      @include flex-grid-column(6);
+      border-left: 4px solid $primary-color;
+    }
+  }
   p.subheader {
-    text-transform: uppercase;
-    font-size: 15px;
-    color: $dark-gray;
-    letter-spacing: 5px;
-    text-align: center;
+    font-size: 110px;
+    line-height: 90px;
+    color: $black;
+    margin: 0;
     position: relative;
+    width: 100%;
+    font-family: $serif;
+    text-transform: capitalize;
+    letter-spacing: 3px;
     z-index: 60;
+    padding: 20px 20px 0;
+    word-spacing: 9999999px;
+    a {
+      word-spacing:normal;
+      font-size: 16px;
+      letter-spacing: 0px;
+      font-family: $sans600;
+      border-bottom: 2px solid $black;
+      color: $black;
+      padding-bottom: 3px;
+      transition: all 0.25s ease;
+      &:hover {
+        padding-right: 30px;
+      }
+    }
+    @include breakpoint(medium) {
+      font-size: 100px;
+      line-height: 80px;
+    }
     strong {
-      font-family: $sans800;
+      color: $primary-color;
+      font-weight: 400;
     }
   }
   .page-logo {
@@ -297,10 +469,11 @@ h3 {
     width: 45px;
     height: 40px;
     position: absolute;
+    z-index: 599;
     left: 0; right: 0;
-    bottom: 45px;
+    bottom: 25px;
     margin: auto;
-    padding: 0!important;
+    padding: 0;
     font-size: 35px;
     text-align: center;
     color: rgba(255,255,255,0.7);
@@ -309,17 +482,23 @@ h3 {
       width: 40px;
       height: 40px;
       display: block;
-      background-image: url(http://media.saltagency.co/images/down-white.png);
+      background-image: url(/images/down.png);
       background-size: 100% auto;
       background-position: left;
       background-repeat: no-repeat;
       transition: all 0.2s ease;
-      margin-left: -5px;
       &:hover {
         transform: scale(1.2);
         color: #fff;
         animation: none;
       }
+    }
+  }
+  .parallax {
+    opacity: 0;
+    transition: opacity 2s ease;
+    &.fade {
+      opacity: 0.5;
     }
   }
 }
@@ -334,7 +513,7 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 4.75px;
   color: $black;
-  margin-top: 30px;
+  margin-top: 12px;
   padding: 10px 0;
   width: 30px;
   margin-right: 24px;
@@ -395,7 +574,6 @@ h3 {
   background: $white;
   transition: all 1s ease;
   overflow: hidden;
-  display: none;
   &.visible {
     padding-top: 120px;
     top: 0;
@@ -407,19 +585,19 @@ h3 {
       a {
         font-size: 26px;
         color: #2A2A2A;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
         text-transform: uppercase;
         border-left: 6px solid transparent;
         display: block;
-        padding-left: 24px;
+        padding-left: 14px;
         margin-bottom: 20px;
         transition: all 0.2s ease;
+        font-family: $sans400;
         &.active {
-          font-family: $sans600;
           border-left: 6px solid $primaryColor;
+          font-family: $sans800;
         }
         &:hover, &.active {
-          font-family: $sans600;
           border-left: 6px solid $primaryColor;
         }
       }
@@ -454,8 +632,9 @@ h3 {
       text-transform: uppercase;
       font-family: $sans800;
       font-size: 12px;
-      color: $secondaryColor;
+      color: darken($secondaryColor, 5%);
       letter-spacing: 1px;
+      margin: 0;
       @include breakpoint(medium) {
         font-size: 18px;
         line-height: 60px;
@@ -463,17 +642,18 @@ h3 {
     }
     h3 {
       float: left;
-      font-family: $sans800;
-      font-size: 28px;
-      line-height: 30px;
-      letter-spacing: 8px!important;
-      text-transform: uppercase;
-      padding: 0 6px 0 18px;
+      font-family: $serif;
+      font-size: 44px;
+      line-height: 33px;
+      letter-spacing: 1px!important;
+      text-transform: capitalize;;
+      padding: 0 18px 0 18px;
       @include breakpoint(medium) {
-        font-size: 52px;
-        letter-spacing: 12px!important;
-        padding: 0 24px 0 36px;
-        line-height: 60px;
+        font-size: 62px;
+        letter-spacing: 2px!important;
+        padding: 0 36px 0 36px;
+        line-height: 65px;
+        margin: 0;
       }
     }
   }
@@ -492,9 +672,15 @@ h3 {
   }
 }
 
+#services {
+  overflow: hidden;
+}
 #serviceList {
   li {
-    margin-bottom: 120px;
+    margin-bottom: 60px;
+    @include breakpoint(medium) {
+      margin-bottom: 60px;
+    }
     &:nth-child(n+4) {
       margin-bottom: 0;
     }
@@ -541,31 +727,43 @@ h3 {
   }
 }
 #instafeed {
+  @include breakpoint(small only) {
+    .columns:nth-of-type(n+4) {
+      display: none;
+    }
+  }
   a {
     background: $black;
     overflow: hidden;
     display: block;
     img {
-        transform: scale(1.5);
-        display: block;
-        transition: all 0.25s ease;
+      transform: scale(1.5);
+      display: block;
+      opacity: 0.75;
+      transition: all 0.25s ease;
     }
     &:hover {
       img {
-        opacity: 0.5;
+        opacity: 1;
         transform: scale(1.75);
       }
     }
   }
 }
 #discover {
-  .button {
-    margin-top: 60px;
-    // background: rgba($secondaryColor, 0.4);
-    // &:hover {
-    //   background: rgba($secondaryColor, 0.75);
-    //   color: $black;
-    // }
+  .columns {
+    margin-bottom: 20px;
+    @include breakpoint(medium down) {
+      margin-bottom: 20px;
+    }
+  }
+  .discover-link {
+    @include breakpoint(medium) {
+      padding-top: 20px;
+    }
+    .columns {
+      margin-bottom: 0!important;
+    }
   }
 }
 
@@ -581,13 +779,13 @@ h3 {
     overflow: hidden;
     transition: all .5s ease;
     @include flex-block(12, 4, 4);
-    &:hover .project-details {
+    &:hover .project-details, &.hover .project-details {
       opacity: 1;
       transform: scale(1);
       top: 0;
       transition: opacity .5s ease, transform .5s ease, top 0s ease;
     }
-    &:hover img {
+    &:hover img, &.hover img {
       transform: scale(.9);
       transition: all .5s ease;
     }
@@ -601,32 +799,42 @@ h3 {
       margin: auto;
       width: 80%;
       height: 80%;
-      text-align: center;
       transition: opacity .5s ease, transform .5s ease, top 0s ease .5s;
       transform: scale(.8);
-      h3 {
-        font-family: $sans600;
-        color: $black;
-        font-size: 24px;
-        letter-spacing: 1.5px!important;
-        line-height: 24px;
-        text-transform: uppercase;
-        margin-bottom: 32px;
+      .column {
+        height: 100%;
+        padding: 0;
+        position: relative;
+        padding: 40px;
         @include breakpoint(medium only) {
-          font-size: 14px;
-          line-height: 15px;
-          letter-spacing: 3px;
-          margin-bottom: 18px;
+          padding: 20px;
         }
       }
-      .button {
-        @include breakpoint(medium only) {
-          font-size: 11px;
-          letter-spacing: 1px;
+      h3 {
+        color: $white;
+        font-size: 58px;
+        line-height: 56px;
+        width: 100%;
+        margin: 0 0 -8px;
+        letter-spacing: 1.5px!important;
+        text-transform: capitalize;
+        position: absolute;
+        bottom: 40px;
+        word-spacing: 9999999px;
+        @include breakpoint(large) {
+          font-size: 38px;
+          line-height: 36px;
         }
-        &:hover {
-          background: darken($offWhite, 10%);
-        }
+      }
+      h5 {
+        margin-bottom: 0;
+        display: inline-block;
+        color: $white;
+        font-family: $sans600;
+        font-size: 16px;
+        width: auto;
+        padding: 3px 0 0 0;
+        border-top: 2px solid $white;
       }
     }
     img {
@@ -639,44 +847,89 @@ h3 {
     }
   }
 }
+#project {
+  .brand-vision {
+    font-family: $sans800;
+    letter-spacing: -3px;
+    font-size: 36px;
+    line-height: 36px;
+  }
+  .excerpt {
+    color: $medium-gray;
+    margin: 0;
+  }
+}
+
 
 #caseStudy {
   background: #000;
   position: relative;
-  z-index: 0;
-  h2,h3,h4,p {
-    color: $offWhite;
+  .row {
+    position: relative;
+  }
+  .parallax {
+    opacity: 0.5;
+  }
+  h2, h4, p {
+    color: $white;
     transition: all 0.8s ease;
+    text-align: left;
   }
   h2 {
-    font-family: $sans800;
-    font-size: 60px;
-    letter-spacing: -5px;
-    line-height: 50px;
-  }
-  h3 {
-    text-transform: uppercase;
-    font-family: $sans600;
-    letter-spacing: 6px;
-    margin-bottom: 60px;
+    margin: 4rem auto 4rem;
+    word-spacing: 9999999px;
   }
   h4 {
-    font-family: $sans200;
-    font-size: 30px;
-    color: #F9F9F9;
-    line-height: 46px;
+    font-family: $sans600;
+    font-size: 24px;
     text-transform: uppercase;
+    line-height: 36px;
   }
   p {
-    margin-bottom: 60px;
+    margin: 0;
+  }
+  .casestudy-link {
+    display: flex;
+    flex-grow: 1;
+    text-decoration: none;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+    padding: 150px 0;
+    &:hover:before {
+      transition: all 0.2s ease;
+    }
+    &:hover {
+      .post:before {
+        transition: all 0.2s ease;
+        padding-right: 60px;
+      }
+    }
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: all 0.5s ease;
+    }
+    .post {
+      &:before {
+        content: "View Case Study";
+        padding: 4px 0px 5px;
+        font-size: 1.1rem;
+        font-family: $sans600;
+        color: $white;
+        border-top: $white 2px solid;
+        transition: all 0.5s ease;
+      }
+    }
   }
   &:hover {
     .parallax {
-      opacity: 0.5;
-    }
-    h2 {
-      letter-spacing: -3px;
-      transform: scale(1.05);
+      opacity: 0.15;
     }
   }
 }
@@ -704,126 +957,19 @@ h3 {
 }
 
 // SINGLE styles
-
-/* CONTENT BODY */
-$cbmargin : 80px;
-#contentBody {
-  max-width: 100%;
-  overflow: hidden;
-  .content .columns {
-    & > :only-child {
-      margin: $cbmargin/2 0;
-      @include breakpoint(medium) {
-        margin: $cbmargin 0;
-      }
-    }
-    & > :last-child {
-      margin-bottom: $cbmargin/2;
-      @include breakpoint(medium) {
-        margin-bottom: $cbmargin;
-      }
-    }
-    & > :first-child {
-      margin-top: $cbmargin/2;
-      @include breakpoint(medium) {
-        margin-top: $cbmargin;
-      }
-    }
-  }
-  h1, h2, h3, h4, h5 {
-    a {
-      cursor: text;
-      color: $black;
-    }
-  }
-  h2 {
-    text-transform: none;
-    letter-spacing: -3px!important;
-    font-family: $sans800;
-    margin-bottom: 18px;
-    margin-top: $cbmargin;
-    @include breakpoint(medium) {
-      letter-spacing: -4px!important;
-    }
-  }
-  h3 {
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 2px;
-    margin: $cbmargin/2 0;
-    @include breakpoint(medium) {
-      letter-spacing: 5px;
-    }
-  }
-  h4 {
-    font-family: $sans800;
-    letter-spacing: -1px;
-  }
-  p {
-    width: 100%;
-    margin-bottom: $cbmargin/2;
-    strong {
-      font-family: $sans800;
-      font-weight: 200;
-    }
-    a {font-family: $sans600;}
-  }
-  pre {
-    margin-bottom: $cbmargin/2;
-  }
-  .flex-video {
-    margin: $cbmargin 0;
-  }
-  .flex-wrap {
-    padding: 0!important;
-    .columns {
-      padding: 0!important;
-      @include flex-grid-column(6);
-      &:only-child, &:nth-child(3n) {
-        @include flex-grid-column(12);
-      }
-      @include breakpoint(medium) {
-        @include flex-grid-column();
-        &:only-child, &:nth-child(3n) {
-          @include flex-grid-column();
-        }
-      }
-      img {
-        width: 100%; height: auto;
-      }
-    }
-  }
-  p + blockquote {
-    margin: $cbmargin 0 $cbmargin;
-  }
-  blockquote {
-    font-family: $serif;
-    font-style: italic;
-    font-size: 22px;
-    border-left: 4px solid $secondaryColor;
-    margin: $cbmargin 0;
-    padding-top: 0;
-    p {
-      color: $medium-gray;
-      line-height: 26px;
-      padding: 0;
-      margin: 0;
-    }
-    strong {
-      font-family: $serif;
-      font-weight: bold;
-    }
-  }
-}
-
 #team {
   h3 {
     color: $white;
+    @include breakpoint(medium) {
+      font-size: 65px;
+      line-height: 55px;
+    }
   }
   h4 {
     font-size: 20px;
     margin-bottom: 18px;
-    color: $white
+    color: $white;
+    font-family: $sans400;
   }
   h5 {
     text-transform: uppercase;
@@ -837,6 +983,12 @@ $cbmargin : 80px;
 #scope {
   h3, h4, h5, p, span {
     color: $black;
+  }
+  h3 {
+    @include breakpoint(medium) {
+      font-size: 65px;
+      line-height: 55px;
+    }
   }
   span {
     display: block;
@@ -854,7 +1006,7 @@ $cbmargin : 80px;
 
 *************************/
 .Process {
-  #pillars {
+  #heart {
     .columns {
       margin-bottom: 60px;
       &:last-child {
@@ -888,50 +1040,21 @@ $cbmargin : 80px;
     }
   }
   #whois {
-    .caption-block {
-      position: relative;
-      .caption {
-        position: absolute;
-        color: $white;
-        bottom: 60px;
-        text-transform: uppercase;
-        width: 100%;
-        padding: 0 5%;
-      }
-    }
     img {
       display: block;
       margin: 0;
     }
-    h4 {
-      font-family: $sans600;
-      font-size: 20px;
-      letter-spacing: 4px;
-      line-height: 20px;
-      text-transform: uppercase;
-      margin-bottom: 0!important;
+    .bio {
+      @include breakpoint(small only) {
+        max-width: 280px;
+      }
     }
     span {
-      color: $secondaryColor
+      color: scale-color($secondaryColor, $lightness: -20%);
     }
     hr {
       border-color: $secondaryColor;
       margin: 60px 0;
-    }
-    .button {
-      margin-top: 30px!important
-    }
-    a.tel {
-      margin-top: 15px;
-      padding: 18px 26px;
-      font-family: $sans800;
-      font-size: 14px;
-      color: $black;
-      letter-spacing: 3.5px;
-      line-height: 18px;
-      text-transform: uppercase;
-      display: inline-block;
-      transition: all 0.2s ease;
     }
   }
 }
@@ -946,31 +1069,46 @@ $cbmargin : 80px;
   z-index: 0;
 }
 
+.talk {
+  h2 {
+    margin: 0;
+    @include breakpoint(small only) {
+      margin-bottom: 15px
+    }
+  }
+  h6, p {
+    margin-bottom: 15px;
+  }
+  @include breakpoint(medium only) {
+    .row .row .columns:first-of-type {
+      margin-bottom: 12px!important;
+    }
+  }
+}
+
 // SOCIAL COMPONENT
 .social-header {
-  background: rgba($secondaryColor, .3);
-  -webkit-backdrop-filter: blur(12px);
   margin: 0!important;
+  p {
+    color: $light-gray!important;
+    @include breakpoint(medium) {
+      padding: 0 20px;
+    }
+  }
 }
 .social-list {
+  position: relative;
+  padding: 30px 0;
+  @include breakpoint(small only) {
+    margin-top: 60px;
+  }
   div {
     padding: 0!important;
     margin: 0!important;
-    a {
-      background: $offWhite;
-      padding: 30px;
+    a.link {
       font-size: 26px;
-      color: $secondaryColor;
-      &:hover {
-        background-color: darken($offWhite, 3%);
-        color: $secondaryColor;
-        i {
-          transform: scale(1.5);
-        }
-      }
     }
     a, i {
-      display: block;
       transition: all 0.25s ease;
     }
   }
@@ -981,7 +1119,7 @@ $cbmargin : 80px;
   max-width: 100%!important;
   height: 100%;
   position: absolute;
-  z-index: 100;
+  z-index: 600;
   top: 0;
   left: 0;
   display: none;
@@ -1001,8 +1139,8 @@ $cbmargin : 80px;
   .left-panel {
     height: 100%;
     max-width: 100%;
-    transform: translateX(-100%);
     transition: all 0.5s ease;
+    transform: translateX(-100%);
     display: none;
     @include flex-grid-column(8);
     &.visible {
@@ -1013,8 +1151,8 @@ $cbmargin : 80px;
     height: 100%;
     max-width: 100%;
     right: 100%;
-    transform: translateX(100%);
     transition: all 0.5s ease;
+    transform: translateX(100%);
     display: none;
     .column {
       padding-left: 45px;
@@ -1024,9 +1162,7 @@ $cbmargin : 80px;
       @include flex-grid-column(4);
     }
     h2.logo {
-      font-size: 40px;
-      letter-spacing: 12px;
-      font-family: $sans800;
+      font-size: 66px;
       margin-bottom: 16px;
     }
     &.visible {

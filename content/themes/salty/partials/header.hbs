@@ -1,51 +1,42 @@
 <header id="header" class="flex expanded align-center contrast-text">
   {{#if image}}
-    <div class="parallax opaque invisible" style="background-image: url({{image}});"
-    data-top="background-position: 50% 50px;"
-    data-top-bottom="background-position: 50% -50px;"
-    data-anchor-target="#header"></div>
+    <div class="parallax opaque invisible" style="background-image: url({{image}});"></div>
   {{else if @blog.cover}}
-  <div class="parallax invisible" style="background-image: url({{@blog.cover}});"
-  data-top="background-position: 50% 50px;"
-  data-top-bottom="background-position: 50% -50px;"
-  data-anchor-target="#header"></div>
+    <div class="parallax opaque invisible" style="background-image: url({{@blog.cover}});"></div>
   {{/if}}
+    <div class="overlay"></div>
 
-  <section class="row align-center expanded">
+  <section class="row align-center expanded project">
     <nav id="main-nav" class="small-6 medium-12 columns small-order-2 medium-order-1">
       <ul class="show-for-medium">
         {{navigation}}
-        <li class="show-for-medium"><a id="toggleConnect" href="#">connect</a></li>
       </ul>
       <a class="nav-toggle hide-for-medium" href="#"><span></span></a>
     </nav>
 
-    <div id="headline" class="small-6 medium-12 columns small-order-1 medium-order-2">
-      <h1 class="logo medium-text-center"
-      data-0="transform: translate(0px, 0px);"
-      data-top-bottom="transform: translate(0px, -240px);"
-      data-anchor-target="#header">
-        <a href="http://saltagency.co">SALT</a>
-      </h1>
-
-      <p class="subheader show-for-medium"
-      data-0="transform: translate(0px, 0px);"
-      data-top-bottom="transform: translate(0px, -180px);"
-      data-anchor-target="#header">
+    <div id="headline" class="small-6 medium-10 columns small-order-1 medium-order-2 flex">
+      <div class="page-links">
+        <h1 class="logo">salt</h1>
         {{#if title}}
-          <strong>{{title}}</strong> <br>
-          {{date format="DD MMMM YYYY"}}
-        {{ else }}
-          {{@blog.description}}
+          <small class="show-for-medium">{{date format="DD MMMM YYYY"}}</small>
         {{/if}}
-      </p>
+      </div>
+
+      <div class="subheader-wrap">
+        <p class="subheader show-for-medium">
+          {{#if title}}
+            {{title}}
+          {{ else }}
+            {{@blog.description}}
+          {{/if}}
+        </p>
+      </div>
     </div>
 
     <div class="small-12 small-order-3 hide-for-medium">
       <p class="subheader">
         {{#if title}}
-          <strong>{{title}}</strong> <br>
-          {{date format="DD MMMM YYYY"}}
+          {{title}}
         {{ else }}
           {{@blog.description}}
         {{/if}}

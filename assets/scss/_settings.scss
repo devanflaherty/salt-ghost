@@ -55,9 +55,9 @@ $foundation-palette: (
   alert: #ec5840,
 );
 $light-gray: #e6e6e6;
-$medium-gray: #5A5E62;
+$medium-gray: #9EA4AA;
 $dark-gray: #2a2a2a;
-$black: #20272B;
+$black: #222220; //#20272B;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
@@ -101,7 +101,7 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: $body-font-family;
+$header-font-family: $serif;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
@@ -138,8 +138,8 @@ $code-font-weight: $global-weight-normal;
 $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
-$anchor-color: $primary-color;
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
+$anchor-color: scale-color($primaryColor, $lightness: -5%);
+$anchor-color-hover: scale-color($anchor-color, $lightness: -15%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
 $hr-width: $global-width;

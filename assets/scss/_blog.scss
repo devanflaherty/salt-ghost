@@ -284,18 +284,35 @@ margin on the iframe, cause it breaks stuff. */
 }
 #header {
   background: black;
+  .page-links {
+    small {
+      flex: 1 50%;
+      font-family: $sans600;
+      font-size: 16px;
+      color: $secondaryColor;
+      display: block;
+      text-align: right;
+      margin-bottom: 8px;
+    }
+  }
+  p.subheader {
+    font-size: 88px!important;
+    line-height: .9!important;
+    letter-spacing: -.25px;
+    word-spacing:normal!important;
+  }
 }
+
 .opaque {
   opacity: 0.5;
 }
 .post-title {
-  line-height: 50px;
   a {
       text-decoration: none;
       color: $black;
-      line-height: 50px;
       text-transform: none;
-      font-family: $sans800;
+      font-family: $serif;
+      letter-spacing: -2px!important;
   }
 }
 .read-more {
@@ -305,7 +322,7 @@ margin on the iframe, cause it breaks stuff. */
     display: block;
     margin: 1.75rem 0 0 0;
     line-height: 25px;
-    color: darken($offWhite, 30%);
+    color: $medium-gray;
 }
 .author-thumb {
     width: 24px;
@@ -315,21 +332,15 @@ margin on the iframe, cause it breaks stuff. */
     border-radius: 100%;
 }
 .post-meta a {
-    color: darken($offWhite, 30%);
+    color: $black;
+    font-family: $sans600;
     text-decoration: none;
-}
-.post-meta a:hover {
-    text-decoration: underline;
-}
-.user-meta {
-    position: relative;
-    padding: 0.3rem 40px 0 100px;
 }
 .post-date {
     display: inline-block;
     margin-left: 8px;
     padding-left: 12px;
-    border-left: $secondaryColor 1px solid;
+    border-left: $black 2px solid;
     white-space: nowrap;
 }
 .post-details {
@@ -339,10 +350,6 @@ margin on the iframe, cause it breaks stuff. */
     position: absolute;
     top: 0;
     left: 0;
-}
-.user-name {
-    display: block;
-    font-weight: 700;
 }
 .user-bio {
     display: block;
@@ -448,41 +455,30 @@ margin on the iframe, cause it breaks stuff. */
 /* The author credit area after the post */
 .post-footer {
     position: relative;
-    margin: 4rem 0 0 0;
-    padding: 4rem 0 0 0;
-    border-top: #EBF2F6 1px solid;
-    h4 {
-        margin: 0;
-        a {
-          color: $black;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
+    //margin: 4rem 0 0 0;
+    //padding: 4rem 0 0 0;
+    //border-top: #EBF2F6 1px solid;
+    .author-name {
+      font-size: 32px;
+      line-height: 1;
+      color: $black;
+      a {
+        color: $black;
+      }
     }
     p {
-      color: lighten($black, 30%);
+      color: lighten($black, 20%);
     }
     .share {
-        a {
-          font-size: 1.8rem;
-          display: inline-block;
-          margin: 1rem 1.6rem 1.6rem 0;
-          color: $white;
-          text-decoration: none;
-          transition: all 0.2s ease;
-        }
-        .icon-twitter:hover {
-            color: #55acee;
-        }
-        .icon-facebook:hover {
-            color: #3b5998;
-        }
-        .icon-google-plus:hover {
-            color: #dd4b39;
-        }
+      margin-bottom: 80px;
+      a {
+        font-size: 2rem;
+        display: inline-block;
+        margin: 1rem 1.6rem 1.6rem 0;
+        color: $black;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
     }
 }
 
@@ -493,9 +489,9 @@ margin on the iframe, cause it breaks stuff. */
     list-style: none;
     line-height: 1;
     font-style: italic;
-    color: darken($secondaryColor, 10%);
+    color: $black;
     a {
-        color: darken($secondaryColor, 10%);
+        color: $black;
         &:hover {
             color: #111;
         }
@@ -684,6 +680,8 @@ margin on the iframe, cause it breaks stuff. */
   h2 {
       margin-top: 1rem;
       color: #fff;
+      position: relative;
+      z-index: 200;
   }
   p {
       margin: 0;
@@ -788,6 +786,8 @@ margin on the iframe, cause it breaks stuff. */
     display: inline-block;
     padding: 2px 0;
     min-width: 100px;
+    color: $medium-gray;
+    font-size: 14px;
 }
 
 .newer-posts {
