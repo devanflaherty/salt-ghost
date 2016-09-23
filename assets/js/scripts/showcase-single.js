@@ -4,7 +4,7 @@ $( "#contentBody p" ).has( "img" ).wrap( '<div class="row expanded collapse flex
 // Remove the wrapping p tag
 $( ".flex-wrap p" ).has( "img" ).contents().unwrap();
 
-var rowWrap = '<div class="row align-center content"><div class="small-11 medium-9 columns content-col"></div></div>';
+var rowWrap = '<div class="row align-center content"><div class="small-11 medium-10 large-9 columns content-col"></div></div>';
 var firstChild = $('#contentBody').children().first();
 
 firstChild.not(".flex-wrap").nextUntil('.flex-wrap').andSelf().wrapAll(rowWrap);
@@ -16,3 +16,11 @@ $(".flex-wrap").each(function(i) {
   $(this).has( "a" ).find("a .columns").contents().unwrap();
 });
 $(".youtube-video").addClass("flex-video widescreen");
+
+// IMG Captions
+$(".columns img").each(function() {
+  var imageCaption = $(this).attr("title");
+  if (imageCaption) {
+    $("<h6>" + imageCaption + "</h6>").insertBefore(this);
+  }
+});

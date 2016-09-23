@@ -10,3 +10,7 @@ function resizeDiv() {
   vph = $(window).height();
   $('#header').css({'height': vph});
 }
+
+$( ".parallax" ).waitForImages(function() {
+  $( this ).addClass('fade');
+});
