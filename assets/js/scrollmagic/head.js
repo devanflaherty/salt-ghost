@@ -19,7 +19,15 @@ var tween_header = new TimelineMax()
     opacity: 1
   }, {
     opacity: 0
-  }, 0);
+  }, 0)
+;
+
+var tween_header_parallax = TweenMax
+.fromTo('header .parallax', 1, {
+  transform: 'translate(0px, -50px) scale(1.5)'
+}, {
+  transform: 'translate(0px, 150px) scale(1.5)', ease: Linear.easeNone
+});
 
 var header = new ScrollMagic.Scene({
   triggerElement: '#header',
@@ -27,5 +35,14 @@ var header = new ScrollMagic.Scene({
   duration: "200%"
 })
 .setTween(tween_header)
+// .addIndicators({name: "overlay"})
+.addTo(controller);
+
+var header_parallax = new ScrollMagic.Scene({
+  triggerElement: '#header',
+  triggerHook: "onEnter",
+  duration: "200%"
+})
+.setTween(tween_header_parallax)
 // .addIndicators({name: "overlay"})
 .addTo(controller);

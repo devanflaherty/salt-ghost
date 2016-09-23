@@ -1950,7 +1950,7 @@ body {
   background: #222220 !important; }
 
 .contrast-text .go-down .go-down-icon {
-  background-image: url(/images/down-white.png) !important; }
+  background-image: url(http://www.saltagency.co/images/down-white.png) !important; }
 
 .button {
   padding: 12px 26px;
@@ -2374,7 +2374,7 @@ h6 {
       width: 40px;
       height: 40px;
       display: block;
-      background-image: url(/images/down.png);
+      background-image: url(http://www.saltagency.co/images/down.png);
       background-size: 100% auto;
       background-position: left;
       background-repeat: no-repeat;
@@ -3387,6 +3387,30 @@ margin on the iframe, cause it breaks stuff. */
     line-height: 0.9 !important;
     letter-spacing: -.25px;
     word-spacing: normal !important; }
+
+#header:not(.header-home) {
+  min-height: 200px !important;
+  height: auto !important; }
+  @media screen and (min-width: 40em) {
+    #header:not(.header-home) {
+      min-height: 300px !important; } }
+  @media screen and (max-width: 39.9375em) {
+    #header:not(.header-home) section {
+      max-width: 100%;
+      width: 100%; } }
+  @media screen and (min-width: 40em) {
+    #header:not(.header-home) section {
+      -ms-flex: 1 100%;
+      flex: 1 100%; }
+    #header:not(.header-home) #headline {
+      position: relative; }
+      #header:not(.header-home) #headline .page-links {
+        padding: 0; }
+        #header:not(.header-home) #headline .page-links h1.logo.post-logo {
+          margin: 0 0 0px !important;
+          font-size: 120px !important;
+          line-height: 1 !important;
+          text-align: left; } }
 
 .opaque {
   opacity: 0.5; }

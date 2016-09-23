@@ -303,6 +303,37 @@ margin on the iframe, cause it breaks stuff. */
   }
 }
 
+#header:not(.header-home) {
+  min-height: 200px!important;
+  height: auto!important;
+  @include breakpoint(medium) {
+    min-height: 300px!important;
+  }
+  @include breakpoint(small only) {
+    section {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  @include breakpoint(medium) {
+    section {
+      flex: 1 100%;
+    }
+    #headline {
+      position: relative;
+      .page-links {
+        padding: 0;
+        h1.logo.post-logo {
+          margin: 0 0 0px!important;
+          font-size: 120px!important;
+          line-height: 1!important;
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
 .opaque {
   opacity: 0.5;
 }

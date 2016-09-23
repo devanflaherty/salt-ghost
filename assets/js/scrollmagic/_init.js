@@ -63,7 +63,7 @@ $('.talk h2').each(function(){
   .addTo(controller);
 });
 
-$('.parallax').each(function(){
+$('.para-parent .parallax').each(function(){
   var currentParallax = this;
   var trigger = currentParallax.closest('section');
 

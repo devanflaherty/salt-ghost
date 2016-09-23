@@ -6,9 +6,12 @@ $(function() {
 window.onresize = function(event) {
   resizeDiv();
 };
+
 function resizeDiv() {
   vph = $(window).height();
-  $('#header').css({'height': vph});
+  if($('body').hasClass('home-template')) {
+    $('#header').css({'height': vph});
+  }
 }
 
 $( ".parallax" ).waitForImages(function() {
